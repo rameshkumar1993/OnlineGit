@@ -1,0 +1,749 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SampleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Sample.dbo.AT_Menu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AT_Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModuleId" Type="uniqueidentifier" />
+          <Property Name="ParentMenuId" Type="uniqueidentifier" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="IsVisible" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Sample.dbo.AT_Modules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AT_Modules">
+          <Key>
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="ModuleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModuleName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Enable" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="AT_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsVisible" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AT_RolesForMenu">
+          <Key>
+            <PropertyRef Name="RolesMenuId" />
+          </Key>
+          <Property Name="RolesMenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="MenuId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="AT_User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="200" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="200" />
+          <Property Name="FailedPasswordAttempt" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="AT_UserInRoles">
+          <Key>
+            <PropertyRef Name="UserInRoleId" />
+          </Key>
+          <Property Name="UserInRoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModuleId" Type="uniqueidentifier" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="CompanyMaster">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="TelphoneNo" Type="nvarchar" MaxLength="150" />
+          <Property Name="OfficialMail" Type="nvarchar" MaxLength="150" />
+          <Property Name="Country" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompanyShortName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Pincode" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ComponentMaster">
+          <Key>
+            <PropertyRef Name="MasterComponentId" />
+          </Key>
+          <Property Name="MasterComponentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="MasterCompoName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="ModifiedDate" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="EmployeeMaster">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="EmployeeCode" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="FathersName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="MothersName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateofBirth" Type="datetime" Nullable="false" />
+          <Property Name="MartialStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PerAddress" Type="nvarchar" MaxLength="2000" />
+          <Property Name="PerCity" Type="nvarchar" MaxLength="150" />
+          <Property Name="PerPincode" Type="int" />
+          <Property Name="MobileNo" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TempAddress" Type="nvarchar" MaxLength="2000" />
+          <Property Name="TempCity" Type="nvarchar" MaxLength="150" />
+          <Property Name="TempPincode" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ManagerId" Type="int" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="Password" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Pass_Salt" Type="nvarchar" MaxLength="200" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="DateofJoin" Type="datetime" />
+          <Property Name="EmployeeStatus" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="EmpTermDate" Type="datetime" />
+          <Property Name="DesiginationId" Type="int" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="150" />
+          <Property Name="BloodGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpDescription" Type="nvarchar(max)" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="2000" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="PassExpDate" Type="datetime" />
+          <Property Name="PassModified" Type="nchar" MaxLength="1" />
+          <Property Name="PassUpdateOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TblRegister">
+          <Key>
+            <PropertyRef Name="RegId" />
+          </Key>
+          <Property Name="RegId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="RoleId" Type="int" />
+        </EntityType>
+        <Association Name="FK_AT_RolesForMenu_AT_Roles">
+          <End Role="AT_Roles" Type="Self.AT_Roles" Multiplicity="1" />
+          <End Role="AT_RolesForMenu" Type="Self.AT_RolesForMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AT_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="AT_RolesForMenu">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AT_UserInRoles_AT_Roles">
+          <End Role="AT_Roles" Type="Self.AT_Roles" Multiplicity="1" />
+          <End Role="AT_UserInRoles" Type="Self.AT_UserInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AT_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="AT_UserInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeMaster_CompanyMaster">
+          <End Role="CompanyMaster" Type="Self.CompanyMaster" Multiplicity="1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyMaster">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterComponent_CompanyMaster">
+          <End Role="CompanyMaster" Type="Self.CompanyMaster" Multiplicity="1" />
+          <End Role="ComponentMaster" Type="Self.ComponentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyMaster">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="ComponentMaster">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SampleModelStoreContainer">
+          <EntitySet Name="AT_Roles" EntityType="Self.AT_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AT_RolesForMenu" EntityType="Self.AT_RolesForMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AT_User" EntityType="Self.AT_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AT_UserInRoles" EntityType="Self.AT_UserInRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyMaster" EntityType="Self.CompanyMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComponentMaster" EntityType="Self.ComponentMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeMaster" EntityType="Self.EmployeeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblRegister" EntityType="Self.TblRegister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AT_Menu" EntityType="Self.AT_Menu" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[AT_Menu].[MenuId] AS [MenuId], 
+[AT_Menu].[ModuleId] AS [ModuleId], 
+[AT_Menu].[ParentMenuId] AS [ParentMenuId], 
+[AT_Menu].[MenuName] AS [MenuName], 
+[AT_Menu].[Url] AS [Url], 
+[AT_Menu].[Sort] AS [Sort], 
+[AT_Menu].[IsVisible] AS [IsVisible], 
+[AT_Menu].[CreatedBy] AS [CreatedBy], 
+[AT_Menu].[CreatedDate] AS [CreatedDate], 
+[AT_Menu].[ModifiedBy] AS [ModifiedBy], 
+[AT_Menu].[ModifiedDate] AS [ModifiedDate]
+FROM [dbo].[AT_Menu] AS [AT_Menu]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AT_Modules" EntityType="Self.AT_Modules" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[AT_Modules].[ModuleId] AS [ModuleId], 
+[AT_Modules].[ModuleName] AS [ModuleName], 
+[AT_Modules].[Enable] AS [Enable], 
+[AT_Modules].[CreatedDate] AS [CreatedDate], 
+[AT_Modules].[CreatedBy] AS [CreatedBy], 
+[AT_Modules].[ModifiedDate] AS [ModifiedDate], 
+[AT_Modules].[ModifiedBy] AS [ModifiedBy]
+FROM [dbo].[AT_Modules] AS [AT_Modules]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AT_RolesForMenu_AT_Roles" Association="Self.FK_AT_RolesForMenu_AT_Roles">
+            <End Role="AT_Roles" EntitySet="AT_Roles" />
+            <End Role="AT_RolesForMenu" EntitySet="AT_RolesForMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AT_UserInRoles_AT_Roles" Association="Self.FK_AT_UserInRoles_AT_Roles">
+            <End Role="AT_Roles" EntitySet="AT_Roles" />
+            <End Role="AT_UserInRoles" EntitySet="AT_UserInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeMaster_CompanyMaster" Association="Self.FK_EmployeeMaster_CompanyMaster">
+            <End Role="CompanyMaster" EntitySet="CompanyMaster" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterComponent_CompanyMaster" Association="Self.FK_MasterComponent_CompanyMaster">
+            <End Role="CompanyMaster" EntitySet="CompanyMaster" />
+            <End Role="ComponentMaster" EntitySet="ComponentMaster" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SampleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AT_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AT_RolesForMenu" Relationship="SampleModel.FK_AT_RolesForMenu_AT_Roles" FromRole="AT_Roles" ToRole="AT_RolesForMenu" />
+          <NavigationProperty Name="AT_UserInRoles" Relationship="SampleModel.FK_AT_UserInRoles_AT_Roles" FromRole="AT_Roles" ToRole="AT_UserInRoles" />
+        </EntityType>
+        <EntityContainer Name="CoreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AT_Roles" EntityType="Self.AT_Roles" />
+          <EntitySet Name="TblRegister" EntityType="SampleModel.TblRegister" />
+          <EntitySet Name="AT_Menu" EntityType="SampleModel.AT_Menu" />
+          <EntitySet Name="AT_RolesForMenu" EntityType="SampleModel.AT_RolesForMenu" />
+          <AssociationSet Name="FK_AT_RolesForMenu_AT_Roles" Association="SampleModel.FK_AT_RolesForMenu_AT_Roles">
+            <End EntitySet="AT_Roles" Role="AT_Roles" />
+            <End EntitySet="AT_RolesForMenu" Role="AT_RolesForMenu" />
+          </AssociationSet>
+          <EntitySet Name="CompanyMaster" EntityType="SampleModel.CompanyMaster" />
+          <EntitySet Name="ComponentMaster" EntityType="SampleModel.ComponentMaster" />
+          <AssociationSet Name="FK_MasterComponent_CompanyMaster" Association="SampleModel.FK_MasterComponent_CompanyMaster">
+            <End Role="CompanyMaster" EntitySet="CompanyMaster" />
+            <End Role="ComponentMaster" EntitySet="ComponentMaster" />
+          </AssociationSet>
+          <EntitySet Name="AT_User" EntityType="SampleModel.AT_User" />
+          <EntitySet Name="AT_UserInRoles" EntityType="SampleModel.AT_UserInRoles" />
+          <AssociationSet Name="FK_AT_UserInRoles_AT_Roles" Association="SampleModel.FK_AT_UserInRoles_AT_Roles">
+            <End Role="AT_Roles" EntitySet="AT_Roles" />
+            <End Role="AT_UserInRoles" EntitySet="AT_UserInRoles" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeMaster" EntityType="SampleModel.EmployeeMaster" />
+          <AssociationSet Name="FK_EmployeeMaster_CompanyMaster" Association="SampleModel.FK_EmployeeMaster_CompanyMaster">
+            <End Role="CompanyMaster" EntitySet="CompanyMaster" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+          </AssociationSet>
+          <EntitySet Name="AT_Modules" EntityType="SampleModel.AT_Modules" />
+        </EntityContainer>
+        <EntityType Name="TblRegister">
+          <Key>
+            <PropertyRef Name="RegId" />
+          </Key>
+          <Property Name="RegId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AT_Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Guid" Nullable="false" />
+          <Property Name="ModuleId" Type="Guid" />
+          <Property Name="ParentMenuId" Type="Guid" />
+          <Property Name="MenuName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsVisible" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AT_RolesForMenu">
+          <Key>
+            <PropertyRef Name="RolesMenuId" />
+          </Key>
+          <Property Name="RolesMenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="MenuId" Type="Guid" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AT_Roles" Relationship="SampleModel.FK_AT_RolesForMenu_AT_Roles" FromRole="AT_RolesForMenu" ToRole="AT_Roles" />
+        </EntityType>
+        <Association Name="FK_AT_RolesForMenu_AT_Roles">
+          <End Type="SampleModel.AT_Roles" Multiplicity="1" Role="AT_Roles" />
+          <End Type="SampleModel.AT_RolesForMenu" Multiplicity="*" Role="AT_RolesForMenu" />
+          <ReferentialConstraint>
+            <Principal Role="AT_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="AT_RolesForMenu">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CompanyMaster">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TelphoneNo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="OfficialMail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyShortName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Pincode" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ComponentMaster" Relationship="SampleModel.FK_MasterComponent_CompanyMaster" FromRole="CompanyMaster" ToRole="ComponentMaster" />
+          <NavigationProperty Name="EmployeeMaster" Relationship="SampleModel.FK_EmployeeMaster_CompanyMaster" FromRole="CompanyMaster" ToRole="EmployeeMaster" />
+        </EntityType>
+        <EntityType Name="ComponentMaster">
+          <Key>
+            <PropertyRef Name="MasterComponentId" />
+          </Key>
+          <Property Name="MasterComponentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="MasterCompoName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompanyMaster" Relationship="SampleModel.FK_MasterComponent_CompanyMaster" FromRole="ComponentMaster" ToRole="CompanyMaster" />
+        </EntityType>
+        <Association Name="FK_MasterComponent_CompanyMaster">
+          <End Type="SampleModel.CompanyMaster" Role="CompanyMaster" Multiplicity="1" />
+          <End Type="SampleModel.ComponentMaster" Role="ComponentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyMaster">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="ComponentMaster">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AT_User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FailedPasswordAttempt" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AT_UserInRoles">
+          <Key>
+            <PropertyRef Name="UserInRoleId" />
+          </Key>
+          <Property Name="UserInRoleId" Type="Guid" Nullable="false" />
+          <Property Name="ModuleId" Type="Guid" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AT_Roles" Relationship="SampleModel.FK_AT_UserInRoles_AT_Roles" FromRole="AT_UserInRoles" ToRole="AT_Roles" />
+        </EntityType>
+        <Association Name="FK_AT_UserInRoles_AT_Roles">
+          <End Type="SampleModel.AT_Roles" Role="AT_Roles" Multiplicity="1" />
+          <End Type="SampleModel.AT_UserInRoles" Role="AT_UserInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AT_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="AT_UserInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EmployeeMaster">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FathersName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MothersName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateofBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MartialStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PerAddress" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="PerCity" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PerPincode" Type="Int32" />
+          <Property Name="MobileNo" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="TempAddress" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="TempCity" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TempPincode" Type="Int32" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerId" Type="Int32" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Pass_Salt" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="DateofJoin" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeStatus" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="EmpTermDate" Type="DateTime" Precision="3" />
+          <Property Name="DesiginationId" Type="Int32" />
+          <Property Name="Photo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BloodGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PassExpDate" Type="DateTime" Precision="3" />
+          <Property Name="PassModified" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="PassUpdateOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CompanyMaster" Relationship="SampleModel.FK_EmployeeMaster_CompanyMaster" FromRole="EmployeeMaster" ToRole="CompanyMaster" />
+        </EntityType>
+        <Association Name="FK_EmployeeMaster_CompanyMaster">
+          <End Type="SampleModel.CompanyMaster" Role="CompanyMaster" Multiplicity="1" />
+          <End Type="SampleModel.EmployeeMaster" Role="EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyMaster">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AT_Modules">
+          <Key>
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="ModuleId" Type="Guid" Nullable="false" />
+          <Property Name="ModuleName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Enable" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SampleModelStoreContainer" CdmEntityContainer="CoreEntities">
+          <EntitySetMapping Name="AT_Roles">
+            <EntityTypeMapping TypeName="SampleModel.AT_Roles">
+              <MappingFragment StoreEntitySet="AT_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblRegister">
+            <EntityTypeMapping TypeName="SampleModel.TblRegister">
+              <MappingFragment StoreEntitySet="TblRegister">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ModifedBy" ColumnName="ModifedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RegId" ColumnName="RegId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AT_Menu">
+            <EntityTypeMapping TypeName="SampleModel.AT_Menu">
+              <MappingFragment StoreEntitySet="AT_Menu">
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="ParentMenuId" ColumnName="ParentMenuId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AT_RolesForMenu">
+            <EntityTypeMapping TypeName="SampleModel.AT_RolesForMenu">
+              <MappingFragment StoreEntitySet="AT_RolesForMenu">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RolesMenuId" ColumnName="RolesMenuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyMaster">
+            <EntityTypeMapping TypeName="SampleModel.CompanyMaster">
+              <MappingFragment StoreEntitySet="CompanyMaster">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="CompanyShortName" ColumnName="CompanyShortName" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="OfficialMail" ColumnName="OfficialMail" />
+                <ScalarProperty Name="TelphoneNo" ColumnName="TelphoneNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComponentMaster">
+            <EntityTypeMapping TypeName="SampleModel.ComponentMaster">
+              <MappingFragment StoreEntitySet="ComponentMaster">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="MasterCompoName" ColumnName="MasterCompoName" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="MasterComponentId" ColumnName="MasterComponentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AT_User">
+            <EntityTypeMapping TypeName="SampleModel.AT_User">
+              <MappingFragment StoreEntitySet="AT_User">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="FailedPasswordAttempt" ColumnName="FailedPasswordAttempt" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AT_UserInRoles">
+            <EntityTypeMapping TypeName="SampleModel.AT_UserInRoles">
+              <MappingFragment StoreEntitySet="AT_UserInRoles">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="UserInRoleId" ColumnName="UserInRoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeMaster">
+            <EntityTypeMapping TypeName="SampleModel.EmployeeMaster">
+              <MappingFragment StoreEntitySet="EmployeeMaster">
+                <ScalarProperty Name="PassUpdateOn" ColumnName="PassUpdateOn" />
+                <ScalarProperty Name="PassModified" ColumnName="PassModified" />
+                <ScalarProperty Name="PassExpDate" ColumnName="PassExpDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="EmpDescription" ColumnName="EmpDescription" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="DesiginationId" ColumnName="DesiginationId" />
+                <ScalarProperty Name="EmpTermDate" ColumnName="EmpTermDate" />
+                <ScalarProperty Name="EmployeeStatus" ColumnName="EmployeeStatus" />
+                <ScalarProperty Name="DateofJoin" ColumnName="DateofJoin" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Pass_Salt" ColumnName="Pass_Salt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TempPincode" ColumnName="TempPincode" />
+                <ScalarProperty Name="TempCity" ColumnName="TempCity" />
+                <ScalarProperty Name="TempAddress" ColumnName="TempAddress" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="PerPincode" ColumnName="PerPincode" />
+                <ScalarProperty Name="PerCity" ColumnName="PerCity" />
+                <ScalarProperty Name="PerAddress" ColumnName="PerAddress" />
+                <ScalarProperty Name="MartialStatus" ColumnName="MartialStatus" />
+                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="MothersName" ColumnName="MothersName" />
+                <ScalarProperty Name="FathersName" ColumnName="FathersName" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AT_Modules">
+            <EntityTypeMapping TypeName="SampleModel.AT_Modules">
+              <MappingFragment StoreEntitySet="AT_Modules">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

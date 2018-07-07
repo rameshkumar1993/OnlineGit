@@ -1,0 +1,39 @@
+/*
+Error: Invalid CSS after "...ard/responsive"": expected "{", was ";"
+        on line 91 of H:\Develop.MVC\DevelopMVCProject.Web\Theme\assets\sass\material-dashboard.scss
+
+86: @import "material-dashboard/cards";
+87: @import "material-dashboard/tabs";
+88: @import "material-dashboard/responsive";
+89: 
+90: @import "material-dashboard/rtl";
+91: "material-dashboard/responsive";
+92: 
+93: @import "material-dashboard/rtl";
+
+Backtrace:
+H:\Develop.MVC\DevelopMVCProject.Web\Theme\assets\sass\material-dashboard.scss:91
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/scss/parser.rb:1165:in `expected'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/scss/parser.rb:1099:in `expected'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/scss/parser.rb:1094:in `tok!'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/scss/parser.rb:641:in `block'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/scss/parser.rb:636:in `ruleset'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/scss/parser.rb:660:in `block_child'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/scss/parser.rb:653:in `block_contents'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/scss/parser.rb:117:in `stylesheet'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/scss/parser.rb:42:in `parse'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/engine.rb:393:in `_to_tree'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/engine.rb:285:in `render_with_sourcemap'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/exec/sass_scss.rb:375:in `run'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/exec/sass_scss.rb:62:in `process_result'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/exec/base.rb:40:in `parse'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/lib/sass/exec/base.rb:19:in `parse!'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.3/bin/sass:13:in `<top (required)>'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/bin/sass:19:in `load'
+C:/Users/RAMESH KUMAR/AppData/Local/Temp/Mindscape/WebWorkbench/Ruby193/Ruby193/bin/sass:19:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...ard/responsive\"\": expected \"{\", was \";\"\A         on line 91 of H:\Develop.MVC\DevelopMVCProject.Web\Theme\assets\sass\material-dashboard.scss\A \A 86: @import \"material-dashboard/cards\";\A 87: @import \"material-dashboard/tabs\";\A 88: @import \"material-dashboard/responsive\";\A 89: \A 90: @import \"material-dashboard/rtl\";\A 91: \"material-dashboard/responsive\";\A 92: \A 93: @import \"material-dashboard/rtl\";"; }

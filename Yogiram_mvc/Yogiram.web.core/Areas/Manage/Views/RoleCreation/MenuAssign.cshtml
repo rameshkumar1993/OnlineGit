@@ -1,0 +1,283 @@
+﻿@model RolesMenuModel
+
+@{
+    ViewBag.Title = "Assign Role";
+}
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon col-xs-11" data-background-color="purple">
+                        <span style="font-size:1.3em" class="card-title">Menu Assign</span>
+                    </div>
+
+                    <div class="card-content">
+
+                        @using (Html.BeginForm("MenuAssign", "RoleCreation", FormMethod.Post, new { id = "frmRolesMenu", @class = "form-horizontal" }))
+                        {
+                            <div class="row">
+                                <label class="col-sm-4 label-on-left">Modules</label>
+                                <div class="col-sm-4">
+                                    <div class="form-group label-floating" style="margin-top:24px">
+                                        <label class="control-label"></label>
+                                        @Html.DropDownListFor(model => model.ModuleId, Enumerable.Empty<SelectListItem>(),
+                                                      new { @style = "width:100%", @class = "pmd-select2 form-control" })
+                                        @Html.ValidationMessageFor(model => model.ModuleId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <label class="col-sm-4 label-on-right"></label>
+                            </div>
+                            
+                            <div class="row">
+                                <label class="col-sm-4 label-on-left">Roles</label>
+                                <div class="col-sm-4">
+                                    <div class="form-group label-floating" style="margin-top:24px">
+                                        <label class="control-label"></label>
+                                        @Html.DropDownListFor(model => model.RoleId, Enumerable.Empty<SelectListItem>(),
+                                                      new { @style = "width:100%", @class = "pmd-select2 form-control" })
+                                        @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <label class="col-sm-4 label-on-right"></label>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div style="height:50px">
+                                        <p style="color:white">.</p>
+                                        <div class="spinner text-center" style="margin-top:110px;display:none">
+                                            <span id="js-one" data-spinner="{&quot;radius&quot;: 25}"></span>
+                                            <p style="margin-left:20px">Please Wait . . .</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:140px">
+                                        <h2 class="header-style card-title" style="padding-bottom:0px">
+                                            <small class="menus">Menu's</small>
+                                        </h2>
+                                        <div class="clearfix"></div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4">
+                                            <div id="tree-container"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" id="btnSubmit" class="btn btn-rose pull-right">save</button>
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Theme/assets/js/jquery.spinner.js"></script>
+
+<script src="~/Theme/assets/js/jquery-3.2.1.js"></script>
+
+<script src="~/Theme/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="~/Theme/assets/js/material.min.js" type="text/javascript"></script>
+
+<script src="~/Theme/assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+
+<script src="~/Theme/assets/js/bootstrap-notify.js"></script>
+
+<script src="~/Theme/assets/js/jquery.validate.min.js"></script>
+<script src="~/Theme/assets/js/jquery.tagsinput.js"></script>
+<script src="~/Theme/assets/js/material-dashboard.js?v=1.2.1"></script>
+<script src="~/Theme/assets/js/demo.js" type="text/javascript"></script>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<link href="~/Theme/Select2 Meterial/select2/css/pmd-select2.css" rel="stylesheet" />
+<link href="~/Theme/Select2 Meterial/select2/css/select2.min.css" rel="stylesheet" />
+<script src="~/Theme/Select2 Meterial/select2/js/select2.full.js"></script>
+
+<script src="~/Theme/Select2 Meterial/select2/js/pmd-select2.js"></script>
+<link href="~/Theme/Select2 Meterial/select2/css/select2-bootstrap.css" rel="stylesheet" />
+
+<link href="~/Theme/Tree View/css/checkTree.css" rel="stylesheet" />
+<script src="~/Theme/Tree View/js/checkTree.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $(document).ajaxStart(function () {
+            $(".spinner").css("display", "block");
+            $('#btnSubmit').addClass('disabled');
+        });
+
+        $(document).ajaxComplete(function () {
+            $(".spinner").css("display", "none");
+            $('#btnSubmit').removeClass('disabled');
+        });
+
+        var mockData = [];
+
+        $(function () {
+
+            $('#tree-container').checkTree({
+                data: mockData
+            });
+
+        });
+
+        $('#frmRolesMenu').submit(function () {
+
+            var formData = new FormData(this);
+
+            var menuids = [];
+
+            $($('div').find('.checked')).each(function () {
+                menuids.push($(this).find('input').val())
+            });
+
+            $($('div').find('.half_checked')).each(function () {
+                menuids.push($(this).find('input').val())
+            });
+
+            if ($(this).valid()) {
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: { MenuIds: menuids, RoleId: $("#RoleId").val() },
+                    success: function (response) {
+                        try {
+                            if (response.error) {
+                                notifyError(response.error, '@ViewBag.Title');
+                                return;
+                            }
+                            else {
+                                notifySuccess(response.msg, '@ViewBag.Title');
+                            }
+                        } catch (e) {
+                            if (window.console)
+                                console.error(e);
+
+                            notifyError("Error", '@ViewBag.Title');
+                        }
+                    }
+                });
+            }
+
+            return false;
+        });
+
+
+        $("#RoleId").change(function () {
+
+            fnMenuBind();
+
+        })
+
+        $("#ModuleId").change(function () {
+
+            var data = $('#ModuleId').select2('data')
+            $('.menus').html(data[0].text + " Menu's")
+            fnMenuBind();
+
+        })
+
+
+        $('#RoleId').select2({
+
+            placeholder: "-- Select Role --",
+            //minimumInputLength: 0,
+            allowClear: false,
+            theme: "bootstrap",
+            //multiple: true,
+
+            ajax: {
+                quietMillis: 250,
+                url: '/Manage/RoleCreation/RoleSelect2',
+                dataType: 'json',
+                data: function (params) {
+
+                    params.page = params.page || 1;
+                    return {
+                        srch: params.term,
+                        page: params.page,
+                    };
+                },
+                processResults: function (data, params) {
+
+                    var more = data.length == 10;
+                    return {
+                        results: data,
+                        pagination: {
+                            more: more
+                        }
+                    };
+                }
+            },
+        });
+
+
+        $('#ModuleId').select2({
+
+            placeholder: "-- Select Modules --",
+            //minimumInputLength: 0,
+            allowClear: false,
+            theme: "bootstrap",
+            //multiple: true,
+
+            ajax: {
+                quietMillis: 250,
+                url: '/Manage/RoleCreation/ModuleSelect2',
+                dataType: 'json',
+                data: function (params) {
+
+                    params.page = params.page || 1;
+                    return {
+                        srch: params.term,
+                        page: params.page,
+                    };
+                },
+                processResults: function (data, params) {
+
+                    var more = data.length == 10;
+                    return {
+                        results: data,
+                        pagination: {
+                            more: more
+                        }
+                    };
+                }
+            },
+        });
+
+    });
+
+    function fnMenuBind()
+    {
+        $.ajax({
+            type: "POST",
+            url: "/Manage/RoleCreation/MenuRoleSelect2/",
+            data: { RoleId: $("#RoleId").val(), ModuleId: $("#ModuleId").val() },
+
+            success: function (result) {
+
+                $('#tree-container').checkTree({
+                    data: result
+                });
+
+                $('.arrow').trigger('click')
+                $('.arrow').trigger('click')
+            },
+
+            error: function (result) {
+                notifyError("Internal Process error", '@ViewBag.Title');
+            }
+        });
+    }
+
+</script>

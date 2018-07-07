@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="49a469a52909450b86281664cdc9eea9" Name="Diagram1">
+        <EntityTypeShape EntityType="SampleModel.AT_Roles" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SampleModel.TblRegister" Width="1.5" PointX="2.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SampleModel.AT_Menu" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SampleModel.AT_RolesForMenu" Width="1.5" PointX="4" PointY="0.75" />
+        <AssociationConnector Association="SampleModel.FK_AT_RolesForMenu_AT_Roles" />
+        <EntityTypeShape EntityType="SampleModel.CompanyMaster" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SampleModel.ComponentMaster" Width="1.5" PointX="11.125" PointY="0.75" />
+        <AssociationConnector Association="SampleModel.FK_MasterComponent_CompanyMaster" />
+        <EntityTypeShape EntityType="SampleModel.AT_User" Width="1.5" PointX="2.375" PointY="4.375" />
+        <EntityTypeShape EntityType="SampleModel.AT_UserInRoles" Width="1.5" PointX="0.625" PointY="4.5" />
+        <AssociationConnector Association="SampleModel.FK_AT_UserInRoles_AT_Roles" />
+        <EntityTypeShape EntityType="SampleModel.EmployeeMaster" Width="1.5" PointX="7.625" PointY="0.75" />
+        <AssociationConnector Association="SampleModel.FK_EmployeeMaster_CompanyMaster" />
+        <EntityTypeShape EntityType="SampleModel.AT_Modules" Width="1.5" PointX="4.125" PointY="4.375" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

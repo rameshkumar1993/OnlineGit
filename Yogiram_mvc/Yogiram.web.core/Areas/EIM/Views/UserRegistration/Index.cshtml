@@ -1,0 +1,717 @@
+﻿@model  UserRegister
+
+@{
+    ViewBag.Title = "User Registration";
+    
+}
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row datatable-widget">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="rose">
+                        <i class="material-icons">perm_identity</i>
+                    </div>
+
+                    <div class="card-content">
+                        <h4 class="card-title">
+                            Employee Information -
+                            <small class="category">Complete your profile</small>
+                        </h4>
+                        <div class="toolbar text-left">
+                            <button type="button" class="btn btn-rose btn-fill add" style="padding-left: 20px;padding-right: 20px;">@R.G("ADD")</button>
+                            <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        </div>
+                        <div class="material-datatables">
+                            <table id="datatables" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">@R.M("EmployeeCode")</th>
+                                        <th class="text-center">@R.M("EmployeeName")</th>
+                                        <th class="text-center">@R.M("DateofBirth")</th>
+                                        <th class="text-center">@R.G("Gender")</th>
+                                        <th class="text-center">@R.M("MobileNo")</th>
+                                        <th>@R.M("Status")</th>
+                                        <th class="disabled-sorting text-center">@R.G("Actions")</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-widget" style="display:none">
+            @using (Html.BeginForm("Index", "UserRegistration", FormMethod.Post, new { id = "UserRegister", enctype = "multipart/form-data" }))
+            {
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header card-header-icon" data-background-color="rose">
+                                        <i class="material-icons">perm_identity</i>
+                                    </div>
+
+                                    <div class="card-content">
+                                        <h4 class="card-title">
+                                            Employee Information -
+                                            <small class="category">Complete your profile</small>
+                                        </h4>
+
+                                        <div class="row">
+                                            <div class="col-lg-4" style="text-align:center">
+                                                <legend style="text-align:center">Profile Image</legend>
+                                                <div class="fileinput fileinput-new text-center" id="defaultImgdiv" data-provides="fileinput">
+                                                    <div class="fileinput-new thumbnail" data-trigger="fileinput">
+                                                        <img src="~/Theme/assets/img/default-avatar.png" alt="...">
+                                                    </div>
+
+                                                    <div>
+                                                        <div class="fileinput-preview fileinput-exists thumbnail" id="Newfilediv"></div><br />
+                                                        <span class="btn btn-rose btn-sm btn-file">
+                                                            <span class="fileinput-new" style="cursor:pointer">Select image</span>
+                                                            <span class="fileinput-exists">Change</span>
+                                                            @Html.TextBoxFor(model => model.Photo, new { type = "file" })
+
+                                                        </span>
+                                                        <a href="#pablo" class="btn btn-danger btn-sm fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            @Html.HiddenFor(model => model.EmployeeId)
+                                            <div class="col-md-8">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group label-floating">
+                                                            @Html.LabelFor(model => model.EmployeeName, @R.G("Name"), new { @class = "control-label" })
+                                                            @Html.TextBoxFor(model => model.EmployeeName, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group label-floating">
+                                                            @Html.LabelFor(model => model.EmployeeFatherName, @R.M("FatherName"), new { @class = "control-label" })
+                                                            @Html.TextBoxFor(model => model.EmployeeFatherName, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.EmployeeFatherName, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group label-floating">
+                                                            @Html.LabelFor(model => model.EmployeeMotherName, @R.M("MotherName"), new { @class = "control-label" })
+                                                            @Html.TextBoxFor(model => model.EmployeeMotherName, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.EmployeeMotherName, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.DOB, "", new { @class = "control-label" })
+                                                            @Html.TextBoxFor(model => model.DOB, new { @class = "form-control datepicker", placeholder = @R.M("DateofBirth") })
+                                                            @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>@R.G("Gender") : <span style="color:red">&nbsp;*</span></label>
+                                                            <div class="radio">
+                                                                <label>
+                                                                    @Html.RadioButtonFor(model => model.Gender, @R.G("Male"), new { }) Male
+                                                                </label>
+                                                                <label>
+                                                                    @Html.RadioButtonFor(model => model.Gender, @R.G("FeMale"), new { })  Female
+                                                                </label>
+                                                            </div>
+                                                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Martial Status : <span style="color:red">&nbsp;*</span></label>
+                                                            <div class="radio">
+                                                                <label>
+                                                                    @Html.RadioButtonFor(model => model.Martial, @R.M("Single"), new { id = "rdSingle" }) @R.M("Single")
+                                                                </label>
+                                                                <label>
+                                                                    @Html.RadioButtonFor(model => model.Martial, @R.M("Married"), new { id = "rdMarried" }) @R.M("Married")
+                                                                </label>
+                                                            </div>
+                                                            @Html.ValidationMessageFor(model => model.Martial, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.MobileNo, @R.M("MobileNo"), new { @class = "control-label" })
+                                                    @Html.TextBoxFor(model => model.MobileNo, new { @class = "form-control", maxlength = "13", type = "number", min = "0" })
+                                                    @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group ">
+                                                    @Html.LabelFor(model => model.DOJ, "", new { @class = "control-label " })
+                                                    @Html.TextBoxFor(model => model.DOJ, new { @class = "form-control datepicker ", placeholder = @R.M("Dateofjoin") })
+                                                    @Html.ValidationMessageFor(model => model.DOJ, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.PerAddress, @R.M("PermanentAddress"), new { @class = "control-label" })
+                                                    @Html.TextAreaFor(model => model.PerAddress, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.PerAddress, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating" style="margin-top:26px">
+                                                    @Html.LabelFor(model => model.PerCity, @R.G("City"), new { @class = "control-label" })
+                                                    @Html.TextBoxFor(model => model.PerCity, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.PerCity, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating " style="margin-top:26px">
+                                                    @Html.LabelFor(model => model.PerPincode, @R.M("Pincode"), new { @class = "control-label" })
+                                                    @Html.TextBoxFor(model => model.PerPincode, new { @class = "form-control", maxlength = "6", type = "number", min = "0" })
+                                                    @Html.ValidationMessageFor(model => model.PerPincode, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.TempAddress, @R.M("TemporaryAddress"), new { @class = "control-label" })
+                                                    @Html.TextAreaFor(model => model.TempAddress, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.TempAddress, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating" style="margin-top:26px">
+                                                    @Html.LabelFor(model => model.TempCity, @R.G("City"), new { @class = "control-label" })
+                                                    @Html.TextBoxFor(model => model.TempCity, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.TempCity, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <select class="selectpicker " data-style="select-with-transition">
+                                                    <option value="2">Paris </option>
+                                                    <option value="3">Bucharest</option>
+                                                    <option value="4">Rome</option>
+                                                    <option value="5">New York</option>
+                                                    <option value="6">Miami </option>
+                                                    <option value="7">Piatra Neamt</option>
+                                                    <option value="8">Paris </option>
+                                                    <option value="9">Bucharest</option>
+                                                    <option value="10">Rome</option>
+                                                    <option value="11">New York</option>
+                                                    <option value="12">Miami </option>
+                                                    <option value="13">Piatra Neamt</option>
+                                                    <option value="14">Paris </option>
+                                                    <option value="15">Bucharest</option>
+                                                    <option value="16">Rome</option>
+                                                    <option value="17">New York</option>
+                                                    <option value="18">Miami </option>
+                                                    <option value="19">Piatra Neamt</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating" style="margin-top:26px">
+                                                    @Html.LabelFor(model => model.TempPincode, @R.G("Pincode"), new { @class = "control-label" })
+                                                    @Html.TextBoxFor(model => model.TempPincode, new { @class = "form-control", maxlength = "6", type = "number", min = "0" })
+                                                    @Html.ValidationMessageFor(model => model.TempPincode, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+
+                                                    @Html.LabelFor(model => model.BloodGroup, @R.G("BloodGroup"), new { @class = "control-label" })
+                                                    @Html.TextBoxFor(model => model.BloodGroup, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.BloodGroup, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label>About Me</label>
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label"> Short description for an employee, like good in technical, etc ....</label>
+                                                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = 1 })
+                                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Status</label>
+                                                    <div class="togglebutton">
+                                                        <label>
+                                                            @Html.CheckBoxFor(model => model.EmpStatus, new { @checked = "Checked" }) <span class="btn btn-success btn-sm" id="spnStatus"> live</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                            @*<div class="col-md-4">
+                                                        <div class="form-group">
+                                                            @Html.DropDownListFor(model => model.EmployeeTermDate, Enumerable.Empty<SelectListItem>(),
+                                                new { @style = "width:100%", @class = "pmd-select2 form-control" })
+                                                            @Html.ValidationMessageFor(model => model.EmployeeTermDate, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            @Html.DropDownListFor(model => model.DesiginationId, Enumerable.Empty<SelectListItem>(),
+                                                new { @style = "width:100%", @class = "pmd-select2 form-control" })
+                                                            @Html.ValidationMessageFor(model => model.DesiginationId, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>*@
+                                        </div>
+                                        <button type="button" id="btnCancel" class="btn btn-danger pull-left">@R.G("Cancel")</button>
+                                        <button type="submit" class="btn btn-rose pull-right">@R.M("UpdateProfile")</button>
+                                        <div class="clearfix"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Theme/assets/js/jquery.spinner.js"></script>
+
+<script src="~/Theme/assets/js/jquery-3.2.1.js"></script>
+
+<script src="~/Theme/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="~/Theme/assets/js/material.min.js" type="text/javascript"></script>
+
+<script src="~/Theme/assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+
+<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+
+<script src="~/Theme/assets/js/jquery.validate.min.js"></script>
+
+<script src="~/Theme/assets/js/moment.min.js"></script>
+
+<script src="~/Theme/assets/js/jquery.bootstrap-wizard.js"></script>
+
+<script src="~/Theme/assets/js/bootstrap-notify.js"></script>
+
+<script src="~/Theme/assets/js/bootstrap-datetimepicker.js"></script>
+
+<script src="~/Theme/assets/js/jquery.select-bootstrap.js"></script>
+
+<script src="~/Theme/assets/js/jquery.datatables.js"></script>
+
+<script src="~/Theme/assets/js/sweetalert2.js"></script>
+
+<script src="~/Theme/assets/js/jasny-bootstrap.min.js"></script>
+
+<script src="~/Theme/assets/js/fullcalendar.min.js"></script>
+
+<script src="~/Theme/assets/js/jquery.tagsinput.js"></script>
+
+<script src="~/Theme/assets/js/material-dashboard.js?v=1.2.1"></script>
+
+<script src="~/Theme/assets/js/demo.js"></script>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<link href="~/Theme/Select2 Meterial/select2/css/pmd-select2.css" rel="stylesheet" />
+<link href="~/Theme/Select2 Meterial/select2/css/select2.min.css" rel="stylesheet" />
+<script src="~/Theme/Select2 Meterial/select2/js/select2.full.js"></script>
+
+<script src="~/Theme/Select2 Meterial/select2/js/pmd-select2.js"></script>
+<link href="~/Theme/Select2 Meterial/select2/css/select2-bootstrap.css" rel="stylesheet" />
+
+<script type="text/javascript">
+
+    var datatable;
+
+    $(document).ready(function () {
+
+        datatable = $('#datatables').DataTable({
+
+            processing: true,
+            serverSide: true,
+
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+
+            'columnDefs': [
+                 { "className": "text-center", "targets": "4" }
+            ],
+            ajax:
+                {
+                    url: "/EIM/UserRegistration/LoadData",
+                    type: "POST",
+                    datatype: "json"
+                },
+            columns: [
+                { data: "EmployeeCode", autowidth: true, bSortable: true, bOrderable: true },
+                { data: "EmployeeName", autowidth: true, bSortable: true, bOrderable: true },
+                {
+                    data: "DateofBirth", autowidth: true, bSortable: true, bOrderable: true,
+                    render: function (d) {
+                        return moment(d).format("DD/MM/YYYY");
+                    },
+                },
+                { data: "Gender", autowidth: true, bSortable: true, bOrderable: true },
+                { data: "MobileNo", autowidth: true, bSortable: true, bOrderable: true },
+                {
+                    data: "EmployeeStatus", autowidth: true, bSortable: true, bOrderable: true, "sClass": "text-center",
+                    render: function (data, type, row, meta) {
+
+                        var html = "";
+                        if (data == "L")
+                            html += "<span class='btn-sm btn-success'>LIVE</span>";
+                        else if (data == "R")
+                            html += "<span class='btn-sm btn-danger'>RELIEVED</span>";
+
+                        return html;
+                    }
+                },
+                {
+                    data: "EmployeeId",
+                    render: function (data, type, full, meta) {
+                        var inner = '<div class="td-actions text-center"><a class="btn btn-success edit"><i class="material-icons">edit</i></a></div>'
+                        return inner;
+                    },
+                }],
+
+            responsive: true,
+            language: {
+                search: "",
+                searchPlaceholder: "Search records",
+                sProcessing: '<span id="js-one" data-spinner="{&quot;radius&quot;: 25}"></span>'
+            }
+
+
+
+        });
+
+        datatable.on('click', '.edit', function () {
+
+            //ResetForm();
+            var row = datatable.row($(this).closest('tr')).data();
+
+            $("#EmployeeId").val(row.EmployeeId);
+            $("#EmployeeName").focus().val(row.EmployeeName);
+            $("#EmployeeFatherName").val(row.FathersName);
+            $("#EmployeeMotherName").val(row.MothersName);
+
+            $("input[name=Gender][value=" + row.Gender + "]").attr('checked', 'checked');
+            $("#DOB").val(moment(row.DateofBirth).format("DD/MM/YYYY"));
+            $("input[name=Martial][value=" + row.MartialStatus + "]").attr('checked', 'checked');
+            $("#Email").val(row.Email);
+
+            $("#PerAddress").val(row.PerAddress);
+            $("#PerCity").val(row.PerCity);
+            $("#PerPincode").val(row.PerPincode);
+            $("#MobileNo").val(row.MobileNo);
+            $("#DOJ").val(moment(row.DateofJoin).format("DD/MM/YYYY"));
+
+            $("#TempAddress").val(row.TempAddress);
+            $("#TempCity").val(row.TempCity);
+            $("#TempPincode").val(row.TempPincode);
+            $("#BloodGroup").val(row.BloodGroup);
+            $("#Description").val(row.EmpDescription);
+
+            if (row.EmployeeStatus == 'L')
+                $("#EmpStatus").prop("checked", true).trigger('change');
+            else
+                $("#EmpStatus").prop("checked", false).trigger('change');
+
+            if (row.Photo != null) {
+
+                $("#Newfilediv").empty();
+                $('#defaultImgdiv').addClass('fileinput-exists');
+                $('#defaultImgdiv').removeClass('fileinput-new');
+                $('#Newfilediv').append('<img src="' + row.Photo + '" alt="...">');
+            }
+
+            $('div').removeClass('is-empty');
+
+            $(".form-widget").show();
+            $(".datatable-widget").hide();
+            $("#minimizeSidebar").trigger('click');
+
+        });
+
+        $('#Photo').change(
+
+            function () {
+                var fileExtension = ['jpeg', 'jpg', 'png', ''];
+                if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                    notifyError("Only '.jpeg','.jpg','.png' formats are allowed.", '');
+                    $('#Photo').val('');
+                }
+            })
+
+        $('#EmpStatus').change(function () {
+
+            if ($(this).is(":checked")) {
+
+                $('#spnStatus').addClass('btn-success');
+                $('#spnStatus').removeClass('btn-danger');
+                $('#spnStatus').text('Live');
+            }
+
+            else {
+                $('#spnStatus').removeClass('btn-success');
+                $('#spnStatus').addClass('btn-danger');
+                $('#spnStatus').text('Relived');
+            }
+        });
+
+
+        $(".add").click(function () {
+
+            ResetForm();
+            $(".form-widget").show();
+            $(".datatable-widget").hide();
+            $("#minimizeSidebar").trigger('click');
+
+        });
+
+        $("#btnCancel").click(function () {
+
+            ResetForm();
+            $(".form-widget").hide();
+            $(".datatable-widget").show();
+            $("#minimizeSidebar").trigger('click');
+
+        });
+
+        $('#UserRegister').submit(function () {
+
+            var formData = new FormData(this);
+
+            if ($(this).valid()) {
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        try {
+                            if (response.error) {
+                                notifyError(response.error, '@ViewBag.Title');
+                                return;
+                            }
+                            else {
+
+                                datatable.draw();
+                                $(".datatable-widget").show();
+                                $(".form-widget").hide();
+                                notifySuccess(response.msg, '@ViewBag.Title');
+                            }
+                        } catch (e) {
+                            if (window.console)
+                                console.error(e);
+
+                            notifyError("Error", '@ViewBag.Title');
+                        }
+                    }
+                });
+            }
+
+            return false;
+        });
+
+
+
+        $('#DepartmentId').select2({
+
+            placeholder: "-- Select --",
+            //minimumInputLength: 0,
+            allowClear: true,
+            theme: "bootstrap",
+            //multiple: true,
+
+            ajax: {
+                quietMillis: 250,
+                url: '/EIM/UserRegistration/DepartmentSelect',
+                dataType: 'json',
+                data: function (params) {
+
+                    params.page = params.page || 1;
+                    return {
+                        srch: params.term,
+                        page: params.page,
+                    };
+                },
+                processResults: function (data, params) {
+
+                    var more = data.length == 10;
+                    return {
+                        results: data,
+                        pagination: {
+                            more: more
+                        }
+                    };
+                }
+            },
+        });
+
+
+        //DesignationBind()
+
+        $("#DepartmentId").on("change", function () {
+            $("#DesiginationId").select2("val", "");
+        });
+
+        $("[data-val-required]").each(function () {
+            var label = $('label[for="' + $(this).attr("id") + '"]');
+            var asterisksHtml = '<span style="color:red">&nbsp;*</span>';
+            if (label.text().length > 0 && label.html().indexOf(asterisksHtml) === -1) {
+                label.append(asterisksHtml);
+            }
+        });
+
+
+
+        setTimeout(function () {
+            $('.card.wizard-card').addClass('active');
+        }, 600);
+
+
+
+        $("#datatables_filter label").addClass("form-group");
+
+        $(".dataTables_length").addClass("form-group-sm");
+    });
+
+    //function resetdropdown()
+    //{
+    //    $('#txtOptionId').data('select2').on('open', function (e) {
+    //        this.results.clear();
+    //        this.dropdown._positionDropdown();
+    //    });
+    //}
+
+    function DesignationBind() {
+        var initDesignationSelection = function (element, callback) {
+            var opts = $(element).data("select2").opts;
+            var value = $(element).val();
+
+            if (value.length > 0) {
+                var ajaxOptions = $.extend({}, opts.ajax, {
+                    data: {
+                        id: value,
+                        page: 1
+                    },
+                    success: function (response) {
+                        if (response.length > 0) {
+                            var list = [];
+                            $.each(response, function () {
+                                list.push(this);
+                            });
+                            callback(list);
+                        }
+                    }
+                });
+
+                $.ajax(ajaxOptions);
+            }
+        }
+
+        $("#DesiginationId").select2({
+            placeholder: "Select a state",
+            allowClear: true,
+            theme: "bootstrap",
+
+            ajax: {
+                quietMillis: 250,
+                url: '/EIM/UserRegistration/DesignationSelect',
+                dataType: 'json',
+
+                data: function (params) {
+
+                    params.page = params.page || 1;
+                    return {
+                        srch: params.term,
+                        page: params.page,
+                        DepId: $("#DepartmentId").val(),
+                    };
+                },
+                processResults: function (data, params) {
+
+                    var more = data.length == 10;
+                    return {
+                        results: data,
+                        pagination: {
+                            more: more
+                        }
+                    };
+                }
+            },
+            // initSelection: initDesignationSelection
+        });
+    }
+
+    function ResetForm() {
+
+        $("#UserRegister").validate().resetForm();
+        $(".field-validation-error span").hide()
+        $('#UserRegister').get(0).reset();
+        $("#Newfilediv").empty();
+        $('#defaultImgdiv').removeClass('fileinput-exists');
+        $('#defaultImgdiv').addClass('fileinput-new');
+        $('div').addClass('is-empty');
+
+    }
+
+    demo.initFormExtendedDatetimepickers();
+    demo.initMaterialWizard();
+
+    $("input[data-val-date]").removeAttr("data-val-date");
+
+</script>
+

@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SampleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AT_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsVisible" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AT_RolesForMenu" Relationship="SampleModel.FK_AT_RolesForMenu_AT_Roles" FromRole="AT_Roles" ToRole="AT_RolesForMenu" />
+    <NavigationProperty Name="AT_UserInRoles" Relationship="SampleModel.FK_AT_UserInRoles_AT_Roles" FromRole="AT_Roles" ToRole="AT_UserInRoles" />
+  </EntityType>
+  <EntityContainer Name="CoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AT_Roles" EntityType="Self.AT_Roles" />
+    <EntitySet Name="TblRegister" EntityType="SampleModel.TblRegister" />
+    <EntitySet Name="AT_Menu" EntityType="SampleModel.AT_Menu" />
+    <EntitySet Name="AT_RolesForMenu" EntityType="SampleModel.AT_RolesForMenu" />
+    <AssociationSet Name="FK_AT_RolesForMenu_AT_Roles" Association="SampleModel.FK_AT_RolesForMenu_AT_Roles">
+      <End EntitySet="AT_Roles" Role="AT_Roles" />
+      <End EntitySet="AT_RolesForMenu" Role="AT_RolesForMenu" />
+    </AssociationSet>
+    <EntitySet Name="CompanyMaster" EntityType="SampleModel.CompanyMaster" />
+    <EntitySet Name="ComponentMaster" EntityType="SampleModel.ComponentMaster" />
+    <AssociationSet Name="FK_MasterComponent_CompanyMaster" Association="SampleModel.FK_MasterComponent_CompanyMaster">
+      <End Role="CompanyMaster" EntitySet="CompanyMaster" />
+      <End Role="ComponentMaster" EntitySet="ComponentMaster" />
+    </AssociationSet>
+    <EntitySet Name="AT_User" EntityType="SampleModel.AT_User" />
+    <EntitySet Name="AT_UserInRoles" EntityType="SampleModel.AT_UserInRoles" />
+    <AssociationSet Name="FK_AT_UserInRoles_AT_Roles" Association="SampleModel.FK_AT_UserInRoles_AT_Roles">
+      <End Role="AT_Roles" EntitySet="AT_Roles" />
+      <End Role="AT_UserInRoles" EntitySet="AT_UserInRoles" />
+    </AssociationSet>
+    <EntitySet Name="EmployeeMaster" EntityType="SampleModel.EmployeeMaster" />
+    <AssociationSet Name="FK_EmployeeMaster_CompanyMaster" Association="SampleModel.FK_EmployeeMaster_CompanyMaster">
+      <End Role="CompanyMaster" EntitySet="CompanyMaster" />
+      <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+    </AssociationSet>
+    <EntitySet Name="AT_Modules" EntityType="SampleModel.AT_Modules" />
+  </EntityContainer>
+  <EntityType Name="TblRegister">
+    <Key>
+      <PropertyRef Name="RegId" />
+    </Key>
+    <Property Name="RegId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Mobile" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="AT_Menu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="Guid" Nullable="false" />
+    <Property Name="ModuleId" Type="Guid" />
+    <Property Name="ParentMenuId" Type="Guid" />
+    <Property Name="MenuName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsVisible" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="AT_RolesForMenu">
+    <Key>
+      <PropertyRef Name="RolesMenuId" />
+    </Key>
+    <Property Name="RolesMenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="MenuId" Type="Guid" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AT_Roles" Relationship="SampleModel.FK_AT_RolesForMenu_AT_Roles" FromRole="AT_RolesForMenu" ToRole="AT_Roles" />
+  </EntityType>
+  <Association Name="FK_AT_RolesForMenu_AT_Roles">
+    <End Type="SampleModel.AT_Roles" Multiplicity="1" Role="AT_Roles" />
+    <End Type="SampleModel.AT_RolesForMenu" Multiplicity="*" Role="AT_RolesForMenu" />
+    <ReferentialConstraint>
+      <Principal Role="AT_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="AT_RolesForMenu">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CompanyMaster">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TelphoneNo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="OfficialMail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyShortName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Pincode" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ComponentMaster" Relationship="SampleModel.FK_MasterComponent_CompanyMaster" FromRole="CompanyMaster" ToRole="ComponentMaster" />
+    <NavigationProperty Name="EmployeeMaster" Relationship="SampleModel.FK_EmployeeMaster_CompanyMaster" FromRole="CompanyMaster" ToRole="EmployeeMaster" />
+  </EntityType>
+  <EntityType Name="ComponentMaster">
+    <Key>
+      <PropertyRef Name="MasterComponentId" />
+    </Key>
+    <Property Name="MasterComponentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="MasterCompoName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CompanyMaster" Relationship="SampleModel.FK_MasterComponent_CompanyMaster" FromRole="ComponentMaster" ToRole="CompanyMaster" />
+  </EntityType>
+  <Association Name="FK_MasterComponent_CompanyMaster">
+    <End Type="SampleModel.CompanyMaster" Role="CompanyMaster" Multiplicity="1" />
+    <End Type="SampleModel.ComponentMaster" Role="ComponentMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyMaster">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="ComponentMaster">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AT_User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="Enabled" Type="Boolean" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FailedPasswordAttempt" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AT_UserInRoles">
+    <Key>
+      <PropertyRef Name="UserInRoleId" />
+    </Key>
+    <Property Name="UserInRoleId" Type="Guid" Nullable="false" />
+    <Property Name="ModuleId" Type="Guid" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AT_Roles" Relationship="SampleModel.FK_AT_UserInRoles_AT_Roles" FromRole="AT_UserInRoles" ToRole="AT_Roles" />
+  </EntityType>
+  <Association Name="FK_AT_UserInRoles_AT_Roles">
+    <End Type="SampleModel.AT_Roles" Role="AT_Roles" Multiplicity="1" />
+    <End Type="SampleModel.AT_UserInRoles" Role="AT_UserInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AT_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="AT_UserInRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EmployeeMaster">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FathersName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="MothersName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateofBirth" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MartialStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PerAddress" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="PerCity" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PerPincode" Type="Int32" />
+    <Property Name="MobileNo" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="TempAddress" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="TempCity" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="TempPincode" Type="Int32" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ManagerId" Type="Int32" />
+    <Property Name="RoleId" Type="Int32" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Pass_Salt" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentId" Type="Int32" />
+    <Property Name="DateofJoin" Type="DateTime" Precision="3" />
+    <Property Name="EmployeeStatus" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="EmpTermDate" Type="DateTime" Precision="3" />
+    <Property Name="DesiginationId" Type="Int32" />
+    <Property Name="Photo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="BloodGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmpDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PassExpDate" Type="DateTime" Precision="3" />
+    <Property Name="PassModified" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="PassUpdateOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CompanyMaster" Relationship="SampleModel.FK_EmployeeMaster_CompanyMaster" FromRole="EmployeeMaster" ToRole="CompanyMaster" />
+  </EntityType>
+  <Association Name="FK_EmployeeMaster_CompanyMaster">
+    <End Type="SampleModel.CompanyMaster" Role="CompanyMaster" Multiplicity="1" />
+    <End Type="SampleModel.EmployeeMaster" Role="EmployeeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyMaster">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="EmployeeMaster">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AT_Modules">
+    <Key>
+      <PropertyRef Name="ModuleId" />
+    </Key>
+    <Property Name="ModuleId" Type="Guid" Nullable="false" />
+    <Property Name="ModuleName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Enable" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

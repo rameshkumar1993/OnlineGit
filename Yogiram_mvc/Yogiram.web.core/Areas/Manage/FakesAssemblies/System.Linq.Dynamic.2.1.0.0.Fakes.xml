@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.Linq.Dynamic.2.1.0.0.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:System.Linq.Dynamic.Fakes.ShimDynamicClass">
+            <summary>Shim type of System.Linq.Dynamic.DynamicClass</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicClass.#ctor(System.Linq.Dynamic.DynamicClass)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicClass.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicClass.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicClass.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicClass.Constructor">
+            <summary>Sets the shim of DynamicClass.DynamicClass()</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicClass.ToString">
+            <summary>Sets the shim of DynamicClass.ToString()</summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.Fakes.ShimDynamicClass.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicClass.AllInstances.ToString01">
+            <summary>Sets the shim of DynamicClass.ToString()</summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.Fakes.ShimDynamicExpression">
+            <summary>Shim type of System.Linq.Dynamic.DynamicExpression</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicExpression.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicExpression.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicExpression.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicExpression.ParseLambdaOf2StringObjectArray``2(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.String,System.Object[],System.Linq.Expressions.Expression{System.Func{``0,``1}}})">
+            <summary>Sets the shim of DynamicExpression.ParseLambda(String expression, Object[] values)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicExpression.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicExpression.CreateClassDynamicPropertyArray">
+            <summary>Sets the shim of DynamicExpression.CreateClass(DynamicProperty[] properties)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicExpression.CreateClassIEnumerableOfDynamicProperty">
+            <summary>Sets the shim of DynamicExpression.CreateClass(IEnumerable`1&lt;DynamicProperty&gt; properties)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicExpression.ParseLambdaParameterExpressionArrayTypeStringObjectArray">
+            <summary>Sets the shim of DynamicExpression.ParseLambda(ParameterExpression[] parameters, Type resultType, String expression, Object[] values)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicExpression.ParseLambdaTypeTypeStringObjectArray">
+            <summary>Sets the shim of DynamicExpression.ParseLambda(Type itType, Type resultType, String expression, Object[] values)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicExpression.ParseTypeStringObjectArray">
+            <summary>Sets the shim of DynamicExpression.Parse(Type resultType, String expression, Object[] values)</summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.Fakes.ShimDynamicProperty">
+            <summary>Shim type of System.Linq.Dynamic.DynamicProperty</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicProperty.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicProperty.#ctor(System.Linq.Dynamic.DynamicProperty)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicProperty.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicProperty.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicProperty.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicProperty.ConstructorStringType">
+            <summary>Sets the shim of DynamicProperty.DynamicProperty(String name, Type type)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicProperty.NameGet">
+            <summary>Sets the shim of DynamicProperty.get_Name()</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicProperty.TypeGet">
+            <summary>Sets the shim of DynamicProperty.get_Type()</summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.Fakes.ShimDynamicProperty.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicProperty.AllInstances.NameGet">
+            <summary>Sets the shim of DynamicProperty.get_Name()</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicProperty.AllInstances.TypeGet">
+            <summary>Sets the shim of DynamicProperty.get_Type()</summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.Fakes.ShimDynamicQueryable">
+            <summary>Shim type of System.Linq.Dynamic.DynamicQueryable</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.OrderByOf1IQueryableOfM0StringObjectArray``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Linq.IQueryable{``0},System.String,System.Object[],System.Linq.IQueryable{``0}})">
+            <summary>Sets the shim of DynamicQueryable.OrderBy(IQueryable`1&lt;!!0&gt; source, String ordering, Object[] values)</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.WhereOf1IQueryableOfM0StringObjectArray``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Linq.IQueryable{``0},System.String,System.Object[],System.Linq.IQueryable{``0}})">
+            <summary>Sets the shim of DynamicQueryable.Where(IQueryable`1&lt;!!0&gt; source, String predicate, Object[] values)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.AnyIQueryable">
+            <summary>Sets the shim of DynamicQueryable.Any(IQueryable source)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.CountIQueryable">
+            <summary>Sets the shim of DynamicQueryable.Count(IQueryable source)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.GroupByIQueryableStringStringObjectArray">
+            <summary>Sets the shim of DynamicQueryable.GroupBy(IQueryable source, String keySelector, String elementSelector, Object[] values)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.OrderByIQueryableStringObjectArray">
+            <summary>Sets the shim of DynamicQueryable.OrderBy(IQueryable source, String ordering, Object[] values)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.SelectIQueryableStringObjectArray">
+            <summary>Sets the shim of DynamicQueryable.Select(IQueryable source, String selector, Object[] values)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.SkipIQueryableInt32">
+            <summary>Sets the shim of DynamicQueryable.Skip(IQueryable source, Int32 count)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.TakeIQueryableInt32">
+            <summary>Sets the shim of DynamicQueryable.Take(IQueryable source, Int32 count)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.UnionIQueryableIQueryable">
+            <summary>Sets the shim of DynamicQueryable.Union(IQueryable source, IQueryable other)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimDynamicQueryable.WhereIQueryableStringObjectArray">
+            <summary>Sets the shim of DynamicQueryable.Where(IQueryable source, String predicate, Object[] values)</summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.Fakes.ShimParseException">
+            <summary>Shim type of System.Linq.Dynamic.ParseException</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimParseException.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimParseException.#ctor(System.Linq.Dynamic.ParseException)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimParseException.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimParseException.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.ShimParseException.Bind(System.Runtime.Serialization.ISerializable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimParseException.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimParseException.ConstructorStringInt32">
+            <summary>Sets the shim of ParseException.ParseException(String message, Int32 position)</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimParseException.PositionGet">
+            <summary>Sets the shim of ParseException.get_Position()</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimParseException.ToString">
+            <summary>Sets the shim of ParseException.ToString()</summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.Fakes.ShimParseException.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimParseException.AllInstances.PositionGet">
+            <summary>Sets the shim of ParseException.get_Position()</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.ShimParseException.AllInstances.ToString01">
+            <summary>Sets the shim of ParseException.ToString()</summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.Fakes.StubDynamicClass">
+            <summary>Stub type of System.Linq.Dynamic.DynamicClass</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.StubDynamicClass.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.StubDynamicClass.InitializeStub">
+            <summary>Initializes a new instance of type StubDynamicClass</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.StubDynamicClass.ToString">
+            <summary>Sets the stub of DynamicClass.ToString()</summary>
+        </member>
+        <member name="F:System.Linq.Dynamic.Fakes.StubDynamicClass.ToString01">
+            <summary>Sets the stub of DynamicClass.ToString()</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.StubDynamicClass.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.StubDynamicClass.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.StubDynamicClass.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.Fakes.StubDynamicProperty">
+            <summary>Stub type of System.Linq.Dynamic.DynamicProperty</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.StubDynamicProperty.#ctor(System.String,System.Type)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Fakes.StubDynamicProperty.InitializeStub">
+            <summary>Initializes a new instance of type StubDynamicProperty</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.StubDynamicProperty.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.StubDynamicProperty.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Fakes.StubDynamicProperty.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DA2E0608-98C1-448E-8890-9AE78EDB3EE2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Yogiram.core</RootNamespace>
+    <AssemblyName>Yogiram.core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\ContextContainer.cs" />
+    <Compile Include="DataSource\AT_Menu.cs">
+      <DependentUpon>CoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\AT_Modules.cs">
+      <DependentUpon>CoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\AT_Roles.cs">
+      <DependentUpon>CoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\AT_RolesForMenu.cs">
+      <DependentUpon>CoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\AT_User.cs">
+      <DependentUpon>CoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\AT_UserInRoles.cs">
+      <DependentUpon>CoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\CompanyMaster.cs">
+      <DependentUpon>CoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\ComponentMaster.cs">
+      <DependentUpon>CoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\CoreDBEntities.cs" />
+    <Compile Include="DataSource\CoreEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\CoreEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\CoreEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\EmployeeMaster.cs">
+      <DependentUpon>CoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\TblRegister.cs">
+      <DependentUpon>CoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\JsonHelper.cs" />
+    <Compile Include="Extensions\SessionExtensions.cs" />
+    <Compile Include="Handler\LoginHandler.cs" />
+    <Compile Include="Handler\ModuleHandler.cs" />
+    <Compile Include="Handler\TerminologyProcessor.cs" />
+    <Compile Include="Models\Constant.cs" />
+    <Compile Include="Models\DatatableModel.cs" />
+    <Compile Include="Models\JsonResponseModel.cs" />
+    <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\Select2Model.cs" />
+    <Compile Include="Models\session.cs" />
+    <Compile Include="Mvc\AuthorizeAttribute.cs" />
+    <Compile Include="Mvc\BaseController.cs" />
+    <Compile Include="Mvc\MenuAuthorizeAttribute.cs" />
+    <Compile Include="Mvc\ModuleController.cs" />
+    <Compile Include="Mvc\ModuleWebPageOfTModel.cs" />
+    <Compile Include="Mvc\NewtonsoftJsonResult.cs" />
+    <Compile Include="Mvc\ResourcesCollection.cs" />
+    <Compile Include="Mvc\RoleAuthorizeAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Global.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\LoginService.cs" />
+    <Compile Include="Service\MenuService.cs" />
+    <Compile Include="Service\RoleService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DataSource\CoreEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CoreEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSource\CoreEntities.edmx.diagram">
+      <DependentUpon>CoreEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataSource\CoreEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CoreEntities.edmx</DependentUpon>
+      <LastGenOutput>CoreEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataSource\CoreEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CoreEntities.edmx</DependentUpon>
+      <LastGenOutput>CoreEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Global.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,13 @@
+H:\Yogiram_mvc\Yogiram.web.core\Areas\Manage\Fakes\System.Linq.Dynamic.fakes : warning : Cannot generate stub for System.Linq.Dynamic.DynamicQueryable: type is sealed.
+H:\Yogiram_mvc\Yogiram.web.core\Areas\Manage\Fakes\System.Linq.Dynamic.fakes : warning : Cannot generate stub for System.Linq.Dynamic.DynamicExpression: type is sealed.
+H:\Yogiram_mvc\Yogiram.web.core\Areas\Manage\Fakes\System.Linq.Dynamic.fakes : warning : Cannot generate stub for System.Linq.Dynamic.DynamicOrdering: type is not visible to exported or assembly(System.Linq.Dynamic.2.1.0.0.Fakes).
+H:\Yogiram_mvc\Yogiram.web.core\Areas\Manage\Fakes\System.Linq.Dynamic.fakes : warning : Cannot generate stub for System.Linq.Dynamic.Signature: type is not visible to exported or assembly(System.Linq.Dynamic.2.1.0.0.Fakes).
+H:\Yogiram_mvc\Yogiram.web.core\Areas\Manage\Fakes\System.Linq.Dynamic.fakes : warning : Cannot generate stub for System.Linq.Dynamic.ClassFactory: type is not visible to exported or assembly(System.Linq.Dynamic.2.1.0.0.Fakes).
+H:\Yogiram_mvc\Yogiram.web.core\Areas\Manage\Fakes\System.Linq.Dynamic.fakes : warning : Cannot generate stub for System.Linq.Dynamic.ParseException: type is sealed.
+H:\Yogiram_mvc\Yogiram.web.core\Areas\Manage\Fakes\System.Linq.Dynamic.fakes : warning : Cannot generate stub for System.Linq.Dynamic.ExpressionParser: type is not visible to exported or assembly(System.Linq.Dynamic.2.1.0.0.Fakes).
+H:\Yogiram_mvc\Yogiram.web.core\Areas\Manage\Fakes\System.Linq.Dynamic.fakes : warning : Cannot generate stub for System.Linq.Dynamic.Res: type is sealed.
+H:\Yogiram_mvc\Yogiram.web.core\Areas\Manage\Fakes\System.Linq.Dynamic.fakes : warning : Cannot generate shim for System.Linq.Dynamic.DynamicOrdering: type is not visible to exported or assembly(System.Linq.Dynamic.2.1.0.0.Fakes).
+H:\Yogiram_mvc\Yogiram.web.core\Areas\Manage\Fakes\System.Linq.Dynamic.fakes : warning : Cannot generate shim for System.Linq.Dynamic.Signature: type is not visible to exported or assembly(System.Linq.Dynamic.2.1.0.0.Fakes).
+H:\Yogiram_mvc\Yogiram.web.core\Areas\Manage\Fakes\System.Linq.Dynamic.fakes : warning : Cannot generate shim for System.Linq.Dynamic.ClassFactory: type is not visible to exported or assembly(System.Linq.Dynamic.2.1.0.0.Fakes).
+H:\Yogiram_mvc\Yogiram.web.core\Areas\Manage\Fakes\System.Linq.Dynamic.fakes : warning : Cannot generate shim for System.Linq.Dynamic.ExpressionParser: type is not visible to exported or assembly(System.Linq.Dynamic.2.1.0.0.Fakes).
+H:\Yogiram_mvc\Yogiram.web.core\Areas\Manage\Fakes\System.Linq.Dynamic.fakes : warning : Cannot generate shim for System.Linq.Dynamic.Res: type is not visible to exported or assembly(System.Linq.Dynamic.2.1.0.0.Fakes).

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SampleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Sample.dbo.AT_Menu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AT_Menu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModuleId" Type="uniqueidentifier" />
+    <Property Name="ParentMenuId" Type="uniqueidentifier" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="150" />
+    <Property Name="Url" Type="nvarchar" MaxLength="500" />
+    <Property Name="Sort" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="150" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="150" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AT_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" />
+    <Property Name="IsVisible" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="150" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="150" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Sample.dbo.AT_RolesForMenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AT_RolesForMenu">
+    <Key>
+      <PropertyRef Name="RolesMenuId" />
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="RolesMenuId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="MenuId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="150" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="TblRegister">
+    <Key>
+      <PropertyRef Name="RegId" />
+    </Key>
+    <Property Name="RegId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DOB" Type="datetime" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifedBy" Type="nvarchar" MaxLength="200" />
+    <Property Name="RoleId" Type="int" />
+  </EntityType>
+  <EntityContainer Name="SampleModelStoreContainer">
+    <EntitySet Name="AT_Roles" EntityType="Self.AT_Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblRegister" EntityType="Self.TblRegister" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AT_Menu" EntityType="Self.AT_Menu" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AT_Menu].[MenuId] AS [MenuId], 
+    [AT_Menu].[ModuleId] AS [ModuleId], 
+    [AT_Menu].[ParentMenuId] AS [ParentMenuId], 
+    [AT_Menu].[MenuName] AS [MenuName], 
+    [AT_Menu].[Url] AS [Url], 
+    [AT_Menu].[Sort] AS [Sort], 
+    [AT_Menu].[CreatedBy] AS [CreatedBy], 
+    [AT_Menu].[CreatedDate] AS [CreatedDate], 
+    [AT_Menu].[ModifiedBy] AS [ModifiedBy], 
+    [AT_Menu].[ModifiedDate] AS [ModifiedDate]
+    FROM [dbo].[AT_Menu] AS [AT_Menu]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AT_RolesForMenu" EntityType="Self.AT_RolesForMenu" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AT_RolesForMenu].[RolesMenuId] AS [RolesMenuId], 
+    [AT_RolesForMenu].[RoleId] AS [RoleId], 
+    [AT_RolesForMenu].[MenuId] AS [MenuId], 
+    [AT_RolesForMenu].[CompanyId] AS [CompanyId], 
+    [AT_RolesForMenu].[CreatedDate] AS [CreatedDate], 
+    [AT_RolesForMenu].[CreatedBy] AS [CreatedBy], 
+    [AT_RolesForMenu].[ModifiedDate] AS [ModifiedDate], 
+    [AT_RolesForMenu].[ModifiedBy] AS [ModifiedBy]
+    FROM [dbo].[AT_RolesForMenu] AS [AT_RolesForMenu]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
