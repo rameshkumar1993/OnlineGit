@@ -23,7 +23,7 @@ namespace Yogiram.web.core.Controllers
     {
         public ActionResult Login(string returnUrl)
         {
-            //ViewBag.ReturnUrl = returnUrl;
+            //ViewBag.ReturnUrl = returnUrl; // comment check
 
             AccountLogin model = new AccountLogin();
 
