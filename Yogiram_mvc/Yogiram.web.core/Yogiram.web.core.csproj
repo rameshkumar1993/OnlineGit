@@ -505,10 +505,25 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BioMetrixCore\BioMetrixCore.csproj">
+      <Project>{8289d5d0-d505-4b81-b6b9-d57d05771f71}</Project>
+      <Name>BioMetrixCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yogiram.core\Yogiram.core.csproj">
       <Project>{da2e0608-98c1-448e-8890-9ae78edb3ee2}</Project>
       <Name>Yogiram.core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="zkemkeeper">
+      <Guid>{FE9DED34-E159-408E-8490-B720A5E632C7}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
