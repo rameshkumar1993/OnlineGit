@@ -41,7 +41,14 @@ namespace Yogiram.core.Service
             {
                 User = (from a in db.EmployeeMaster
                         where a.CompanyId == CompanyId && a.EmployeeCode.Equals(UserName)
-                        select new UserDetails { CompanyId = a.CompanyId, UserId = a.EmployeeId, Password = a.Password, UserName = a.EmployeeName, PasswordExpiryDate = a.PassExpDate }).FirstOrDefault();
+                        select new UserDetails
+                        {
+                            CompanyId = a.CompanyId,
+                            UserId = a.EmployeeId,
+                            Password = a.Password,
+                            UserName = a.EmployeeName,
+                            PasswordExpiryDate = a.PassExpDate
+                        }).FirstOrDefault();
             }
 
             if (User != null)
