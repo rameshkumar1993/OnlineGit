@@ -6,6 +6,7 @@ using System;
 using System.Data.SqlClient;
 using zkemkeeper;
 using System.Configuration;
+using System.Web;
 
 namespace BioMetrixCore
 {
@@ -96,33 +97,40 @@ namespace BioMetrixCore
 
         private void zkemClient_OnAttTransactionEx(string EnrollNumber, int IsInValid, int AttState, int VerifyMethod, int Year, int Month, int Day, int Hour, int Minute, int Second, int WorkCode)
         {
-            SqlConnection conn2 = new SqlConnection();
+            try
+            {
+                SqlConnection conn2 = new SqlConnection();
 
-            conn2.ConnectionString = "Data Source=KRISHNA\\SQLEXPRESS;Initial Catalog=Sample;User ID=sa;Password=ramesh123";
-            conn2.Open();
+                conn2.ConnectionString = "Data Source=KRISHNA\\SQLEXPRESS;Initial Catalog=Sample;User ID=sa;Password=ramesh123";
+                conn2.Open();
 
-            SqlCommand cmd = new SqlCommand();
+                SqlCommand cmd = new SqlCommand();
 
-            cmd.CommandText = @"INSERT INTO DeviceLogs(EmpId,Company,IsInValid,AttState,VerifyMethod,PunchDateTime,MachineId,Year,Month,Day,Hour,Minutes,Seconds,CreatedDate)
+                cmd.CommandText = @"INSERT INTO DeviceLogs(EmpId,Company,IsInValid,AttState,VerifyMethod,PunchDateTime,MachineId,Year,Month,Day,Hour,Minutes,Seconds,CreatedDate)
                               VALUES(@EmpId,@Company,@IsInValid,@AttState,@VerifyMethod,@PunchDateTime,@MachineId,@Year,@Month,@Day,@Hour,@Minutes,@Seconds,@CreatedDate)";
 
-            cmd.Connection = conn2;
-            cmd.Parameters.AddWithValue("@EmpId", EnrollNumber);
-            cmd.Parameters.AddWithValue("@Company", "Essl");
-            cmd.Parameters.AddWithValue("@IsInValid", IsInValid);
-            cmd.Parameters.AddWithValue("@AttState", AttState);
-            cmd.Parameters.AddWithValue("@VerifyMethod", VerifyMethod);
-            cmd.Parameters.AddWithValue("@PunchDateTime", DateTime.Now);
-            cmd.Parameters.AddWithValue("@MachineId", 1);
-            cmd.Parameters.AddWithValue("@Year", Year);
-            cmd.Parameters.AddWithValue("@Month", Month);
-            cmd.Parameters.AddWithValue("@Day", Day);
-            cmd.Parameters.AddWithValue("@Hour", Hour);
-            cmd.Parameters.AddWithValue("@Minutes", Minute);
-            cmd.Parameters.AddWithValue("@Seconds", Second);
-            cmd.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
-            cmd.ExecuteNonQuery();
-            conn2.Close();
+                cmd.Connection = conn2;
+                cmd.Parameters.AddWithValue("@EmpId", EnrollNumber);
+                cmd.Parameters.AddWithValue("@Company", "Essl");
+                cmd.Parameters.AddWithValue("@IsInValid", IsInValid);
+                cmd.Parameters.AddWithValue("@AttState", AttState);
+                cmd.Parameters.AddWithValue("@VerifyMethod", VerifyMethod);
+                cmd.Parameters.AddWithValue("@PunchDateTime", DateTime.Now);
+                cmd.Parameters.AddWithValue("@MachineId", 1);
+                cmd.Parameters.AddWithValue("@Year", Year);
+                cmd.Parameters.AddWithValue("@Month", Month);
+                cmd.Parameters.AddWithValue("@Day", Day);
+                cmd.Parameters.AddWithValue("@Hour", Hour);
+                cmd.Parameters.AddWithValue("@Minutes", Minute);
+                cmd.Parameters.AddWithValue("@Seconds", Second);
+                cmd.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
+                cmd.ExecuteNonQuery();
+                conn2.Close();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
         }
 
         void objCZKEM_OnDisConnected()
