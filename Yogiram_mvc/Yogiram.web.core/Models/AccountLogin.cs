@@ -32,7 +32,9 @@ namespace Yogiram.web.core.Models
         public int? CompanyId { get; set; }
 
  
-       public string ReturnUrl { get; set; }
+       public string ReturnUrl { get; set; }    
+       public string ReturnUrls { get; set; }
+
 
     }
 
