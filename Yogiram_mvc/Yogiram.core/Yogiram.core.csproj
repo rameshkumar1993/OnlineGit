@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="Extensions\JsonHelper.cs" />
     <Compile Include="Extensions\SessionExtensions.cs" />
+    <Compile Include="Handler\ExceptionLogging.cs" />
     <Compile Include="Handler\LoginHandler.cs" />
     <Compile Include="Handler\ModuleHandler.cs" />
     <Compile Include="Handler\TerminologyProcessor.cs" />
