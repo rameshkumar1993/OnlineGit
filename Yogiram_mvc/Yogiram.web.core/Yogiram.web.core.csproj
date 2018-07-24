@@ -490,6 +490,7 @@
     <Folder Include="Areas\" />
     <Folder Include="DataSource\" />
     <Folder Include="Images\Employee Photo\" />
+    <Folder Include="SQL\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
