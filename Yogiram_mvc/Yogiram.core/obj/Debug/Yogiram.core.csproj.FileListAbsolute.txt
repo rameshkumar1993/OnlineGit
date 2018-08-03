@@ -48,3 +48,15 @@ F:\OnlineGit\Yogiram_mvc\Yogiram.core\obj\Debug\Yogiram.core.csproj.GenerateReso
 F:\OnlineGit\Yogiram_mvc\Yogiram.core\obj\Debug\Yogiram.core.dll
 F:\OnlineGit\Yogiram_mvc\Yogiram.core\obj\Debug\Yogiram.core.pdb
 F:\OnlineGit\Yogiram_mvc\Yogiram.core\obj\Debug\Yogiram.core.csprojResolveAssemblyReference.cache
+H:\OnlineGit\Yogiram_mvc\Yogiram.core\obj\Debug\Yogiram.core.csprojResolveAssemblyReference.cache
+H:\OnlineGit\Yogiram_mvc\Yogiram.core\obj\Debug\Yogiram.core.Resources.Global.resources
+H:\OnlineGit\Yogiram_mvc\Yogiram.core\obj\Debug\Yogiram.core.csproj.GenerateResource.Cache
+H:\OnlineGit\Yogiram_mvc\Yogiram.core\obj\Debug\Yogiram.core.dll
+H:\OnlineGit\Yogiram_mvc\Yogiram.core\obj\Debug\Yogiram.core.pdb
+H:\OnlineGit\Yogiram_mvc\Yogiram.core\bin\Debug\Yogiram.core.dll.config
+H:\OnlineGit\Yogiram_mvc\Yogiram.core\bin\Debug\Yogiram.core.dll
+H:\OnlineGit\Yogiram_mvc\Yogiram.core\bin\Debug\Yogiram.core.pdb
+H:\OnlineGit\Yogiram_mvc\Yogiram.core\bin\Debug\EntityFramework.dll
+H:\OnlineGit\Yogiram_mvc\Yogiram.core\bin\Debug\Newtonsoft.Json.dll
+H:\OnlineGit\Yogiram_mvc\Yogiram.core\bin\Debug\EntityFramework.xml
+H:\OnlineGit\Yogiram_mvc\Yogiram.core\bin\Debug\Newtonsoft.Json.xml

@@ -113,10 +113,6 @@
     <Compile Include="Handler\LoginHandler.cs" />
     <Compile Include="Handler\ModuleHandler.cs" />
     <Compile Include="Handler\TerminologyProcessor.cs" />
-    <Compile Include="Info\DeviceTimeInfo.cs" />
-    <Compile Include="Info\MachineInfo.cs" />
-    <Compile Include="Info\UserIDInfo.cs" />
-    <Compile Include="Info\UserInfo.cs" />
     <Compile Include="Models\Constant.cs" />
     <Compile Include="Models\DatatableModel.cs" />
     <Compile Include="Models\JsonResponseModel.cs" />
@@ -181,15 +177,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="zkemkeeper">
-      <Guid>{FE9DED34-E159-408E-8490-B720A5E632C7}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
+    <Folder Include="Info\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
