@@ -19,53 +19,94 @@
                     <a href="https://fullcalendar.io/docs/" target="_blank">full documentation.</a>
                 </p>
             </div>*@
-        <div class="row">@R.M("sdf")
-            <div class="col-md-10 col-md-offset-1">
-                <div class="card card-calendar">
-                    <div class="card-content" class="ps-child">
-                        <div id="fullCalendar"></div>
+        <div class="row">
+            @R.M("sdf")
+        <div class="col-md-10 col-md-offset-1">
+            <div class="card card-calendar">
+                <div class="card-content ps-child">
+                    <div id="fullCalendar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <i class="material-icons">clear</i>
+                    </button>
+                    <h3 class="modal-title text-center">fgdgf</h3>
+                </div>
+                <div class="modal-body">
+                    <table cellpadding="10" border="0" align="center" width="70%">
+                        <tr>
+                            <td class="text-right" style="padding: 15px;"><b> IN TIME :&nbsp;&nbsp;</b></td>
+                            <td class="text-center"> <span class="btn-sm btn-success"><b> 09:35 AM </b></span> </td>
+                            <td class="text-right"> <b> OUT TIME :&nbsp;&nbsp;</b> </td>
+                            <td class="text-center"><span class="btn-sm btn-success"><b>10:15 PM</b></span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right" style="padding: 15px;"><b> LATE :&nbsp;&nbsp;</b></td>
+                            <td class="text-center"> <span class="btn-sm btn-warning"><b> 09:35 </b></span></td>
+                            <td class="text-right"><b> EARLY GOING :&nbsp;&nbsp;</b></td>
+                            <td class="text-center"> <span class="btn-sm btn-info"><b>10:15</b></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center" style="padding: 15px;"><b> EFFECTIVE :&nbsp;&nbsp;</b>  </td>
+                            <td colspan="2"><span class="btn-sm btn-primary"><b> 09:35 </b></span>&nbsp;&nbsp;&nbsp;<b>hrs</b></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center" style="padding: 15px;"><b>PERMISSION :&nbsp;</b> </td>
+                            <td colspan="2"><span class="btn-sm btn-primary"><b> 09:35 </b></span>&nbsp;&nbsp;&nbsp;<b>hrs</b></td>
+                        </tr>
+
+                    </table>
+                    @*<p>
+                        <b> IN TIME :&nbsp;&nbsp;</b> <span class="btn-sm btn-success"><b> 09:35 AM </b></span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b> OUT TIME :&nbsp;&nbsp;</b> <span class="btn-sm btn-success"><b>10:15 PM</b></span>
+                    </p>
+                    <p>
+                        <b> LATE :&nbsp;&nbsp;</b> <span class="btn-sm btn-warning"><b> 09:35 </b></span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b> EARLY GOING :&nbsp;&nbsp;</b> <span class="btn-sm btn-rose"><b>10:15</b></span>
+                    </p>
+                    <p>
+                        <b> EFFECTIVE :&nbsp;&nbsp;</b> <span class="btn-sm btn-primary"><b> 09:35 </b></span>&nbsp;&nbsp;&nbsp;<b>hrs</b>
+                    </p>
+                    <p>
+                        <b> PERMISSION :&nbsp;</b> <span class="btn-sm btn-primary"><b> 09:35 </b></span>&nbsp;&nbsp;&nbsp;<b>hrs</b>
+                    </p>*@
+                    <p><h4 style="border-bottom: 1px solid #e9ecef;" class="text-left">Leave Applied</h4> </p>
+                    <div class="card-content table-responsive text-left">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                            <th>ID</th>
+                            <th>Leave Type</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>CL</td>
+                                    <td>03-Aug-2018</td>
+                                    <td>03-Aug-2018</td>
+                                    <td><button type="button" rel="tooltip" title="" class="btn-danger btn-link btn-sm" data-original-title="Cancel"> <i class="material-icons">close</i> </button></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-simple">Nice Button</button>
+                    <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<footer class="footer">
-    <div class="container-fluid">
-        <nav class="pull-left">
-            <ul>
-                <li>
-                    <a href="#">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Company
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Portofolio
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Blog
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <p class="copyright pull-right">
-            &copy;
-            <script>
-                document.write(new Date().getFullYear())
-            </script>
-            <a href="http://www.creative-tim.com"> Creative Tim </a>, made with love for a better web
-        </p>
-    </div>
-</footer>
-
+</div>
 
 <!--   Core JS Files   -->
 <script src="~/Theme/assets/js/jquery-3.2.1.js"></script>
@@ -146,6 +187,7 @@
         d = today.getDate();
 
         $calendar.fullCalendar({
+            height: 700,
             viewRender: function (view, element) {
                 // We make sure that we activate the perfect scrollbar when the view isn't on Month
                 if (view.name != 'month') {
@@ -164,42 +206,49 @@
 
             views: {
                 month: { // name of view
-                    titleFormat: 'MMMM YYYY'
+                    titleFormat: 'MMMM YYYY',
                     // other view-specific options here
+                    fixedWeekCount: false,
                 },
 
-                fixedWeekCount: false,
+
+
             },
 
             select: function (start, end) {
 
+
+                //$('.modal-title').html('<p>' + moment(start).format("DD/MMM/YYYY") + '</p>')
+                //$('.modal-body').html("<p class='btn-sm btn-success'>IN TIME </p> - 10:25 AM || OUT TIME : 08:25 PM")
+                $('#myModal').modal('show');
+
                 // on select we show the Sweet Alert modal with an input
-                swal({
-                    title: 'Create an Event',
-                    html: '<div class="form-group">' +
-                        '<input class="form-control" placeholder="Event Title" id="input-field">' +
-                        '</div>',
-                    showCancelButton: true,
-                    confirmButtonClass: 'btn btn-success',
-                    cancelButtonClass: 'btn btn-danger',
-                    buttonsStyling: false
-                }).then(function (result) {
+                //swal({
+                //    title: 'Create an Event',
+                //    html: '<div class="form-group">' +
+                //        '<input class="form-control" placeholder="Event Title" id="input-field">' +
+                //        '</div>',
+                //    showCancelButton: true,
+                //    confirmButtonClass: 'btn btn-success',
+                //    cancelButtonClass: 'btn btn-danger',
+                //    buttonsStyling: false
+                //}).then(function (result) {
 
-                    var eventData;
-                    event_title = $('#input-field').val();
+                //    var eventData;
+                //    event_title = $('#input-field').val();
 
-                    if (event_title) {
-                        eventData = {
-                            title: event_title,
-                            start: start,
-                            end: end,
-                        };
-                        $calendar.fullCalendar('renderEvent', eventData, true); // stick? = true
-                    }
+                //    if (event_title) {
+                //        eventData = {
+                //            title: event_title,
+                //            start: start,
+                //            end: end,
+                //        };
+                //        $calendar.fullCalendar('renderEvent', eventData, true); // stick? = true
+                //    }
 
-                    $calendar.fullCalendar('unselect');
+                //    $calendar.fullCalendar('unselect');
 
-                });
+                //});
             },
             editable: true,
             eventLimit: true, // allow "more" link when too many events
@@ -214,6 +263,15 @@
                     selectable: false
                 }
                 $('.fc-day[data-date="' + eventDate + '"]').css('background', 'green')
+            },
+            dayRender: function (date, cell) {
+                var today = $.fullCalendar.moment();
+                if (cell.data('date') == '2018-08-25') {
+                    cell.css("background", "#e8e8e8");
+                }
+                if (date.isSame('2018-08-31', 'day')) {
+
+                }
             },
             // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
             events: [{
@@ -267,29 +325,39 @@
 
                 },
                 {
-                    title: 'Click for Creative Tim',
-                    start: new Date(y, m, 21),
-                    end: new Date(y, m, 22),
+                    title: '09:12 AM',
+                    start: new Date(y, m, 24, +1, 10, 30),
+                    //end: new Date(y, m, 22),
                     url: 'http://www.creative-tim.com/',
                     className: 'event-orange'
                 },
                 {
                     title: 'Click for Google',
-                    start: new Date(y, m, 21),
+                    start: new Date(y, m, 22 - 1, 10, 30),
                     end: new Date(y, m, 22),
                     url: 'http://www.creative-tim.com/',
                     className: 'event-orange',
                 },
                  {
-                     title: 'krishna',
-                     start: new Date(y, m, 25),
-                     end: new Date(y, m, 25),
+                     title: 'jEffective : 08:25 hrs',
+                     start: new Date('2018-08-25'),
+                     //end: new Date(y, m, 26),
                      url: 'http://www.creative-tim.com/',
-                     className: 'event-red'
+                     className: 'event-green'
                  },
+                  {
+                      title: 'IN - 09:13 PM | OUT - 08:25 PM',
+                      start: new Date('2018-08-25'),
+                      //end: new Date(y, m, 26),
+                      url: '',
+                      className: 'event-rose',
+                  },
 
-            ],            
+            ],
+            //timeFormat: 'H(:mm) Tt',
+            displayEventTime: false,
         });
+
 
         // demo.initFullCalendar();
     });

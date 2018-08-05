@@ -6283,9 +6283,7 @@ h2.title {
     box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
-.sidebar[data-background-color="black"] {
-    background-color: #191919;
-}
+
 
 .sidebar .sidebar-wrapper {
     position: relative;
@@ -6585,6 +6583,10 @@ h2.title {
     right: 27px;
 }
 
+.sidebar[data-background-color="black"] {
+    background-color: #191919;
+}
+
 .sidebar[data-background-color="black"] .nav li>a {
     color: #FFFFFF;
 }
@@ -6615,6 +6617,50 @@ h2.title {
     background: #000;
     opacity: .8;
 }
+.sidebar[data-background-color="red"] {
+    background-color: #d50000;
+}
+.sidebar[data-background-color="red"] .nav li>a {
+    color: #FFFFFF;
+}
+
+.sidebar[data-background-color="red"] .nav li i {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.sidebar[data-background-color="red"] .nav li.active>[data-toggle="collapse"],
+.sidebar[data-background-color="red"] .nav li:hover>[data-toggle="collapse"] {
+    color: #FFFFFF;
+}
+
+.sidebar[data-background-color="red"] .nav li.active>[data-toggle="collapse"] i,
+.sidebar[data-background-color="red"] .nav li:hover>[data-toggle="collapse"] i {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.sidebar[data-background-color="red"] .user a {
+    color: #FFFFFF;
+}
+
+.sidebar[data-background-color="red"] .simple-text {
+    color: #FFFFFF;
+}
+
+.sidebar[data-background-color="red"] .sidebar-background:after {
+    background: #d50000;
+    opacity: .8;
+}
+
+/*.sidebar[data-background-color="red"] .user:after,
+.sidebar[data-background-color="red"] .logo:after,
+.sidebar[data-background-color="red"] .nav li.separator:after {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.sidebar[data-background-color="red"] .nav li:hover:not(.active)>a,
+.sidebar[data-background-color="red"] .nav li.active>[data-toggle="collapse"] {
+    background-color: rgba(255, 255, 255, 0.15);
+}*/
 
 .sidebar[data-active-color="purple"] li.active>a {
     background-color: #9c27b0;
@@ -6661,47 +6707,7 @@ h2.title {
     color: rgba(60, 72, 88, 0.8);
 }
 
-.sidebar[data-background-color="red"] .nav li>a {
-    color: #FFFFFF;
-}
 
-.sidebar[data-background-color="red"] .nav li i {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.sidebar[data-background-color="red"] .nav li.active>[data-toggle="collapse"],
-.sidebar[data-background-color="red"] .nav li:hover>[data-toggle="collapse"] {
-    color: #FFFFFF;
-}
-
-.sidebar[data-background-color="red"] .nav li.active>[data-toggle="collapse"] i,
-.sidebar[data-background-color="red"] .nav li:hover>[data-toggle="collapse"] i {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.sidebar[data-background-color="red"] .user a {
-    color: #FFFFFF;
-}
-
-.sidebar[data-background-color="red"] .simple-text {
-    color: #FFFFFF;
-}
-
-.sidebar[data-background-color="red"] .sidebar-background:after {
-    background: #d50000;
-    opacity: .8;
-}
-
-.sidebar[data-background-color="red"] .user:after,
-.sidebar[data-background-color="red"] .logo:after,
-.sidebar[data-background-color="red"] .nav li.separator:after {
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.sidebar[data-background-color="red"] .nav li:hover:not(.active)>a,
-.sidebar[data-background-color="red"] .nav li.active>[data-toggle="collapse"] {
-    background-color: rgba(255, 255, 255, 0.15);
-}
 
 .sidebar[data-image]:after,
 .sidebar.has-image:after {
