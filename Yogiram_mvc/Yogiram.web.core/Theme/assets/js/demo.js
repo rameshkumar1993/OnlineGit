@@ -685,31 +685,6 @@ demo = {
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         else if (type == 'warning-message-and-cancel') {
             swal({
                 title: 'Are you sure?',

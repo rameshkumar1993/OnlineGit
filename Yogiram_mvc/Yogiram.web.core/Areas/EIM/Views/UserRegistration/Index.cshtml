@@ -217,7 +217,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6">
+                                            @*<div class="col-lg-6">
                                                 <select class="selectpicker " data-style="select-with-transition">
                                                     <option value="2">Paris </option>
                                                     <option value="3">Bucharest</option>
@@ -238,7 +238,7 @@
                                                     <option value="18">Miami </option>
                                                     <option value="19">Piatra Neamt</option>
                                                 </select>
-                                            </div>
+                                            </div>*@
 
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating" style="margin-top:26px">
@@ -301,7 +301,7 @@
                                                     </div>*@
                                         </div>
                                         <button type="button" id="btnCancel" class="btn btn-danger pull-left">@R.G("Cancel")</button>
-                                        <button type="submit" class="btn btn-rose pull-right">@R.M("UpdateProfile")</button>
+                                        <button type="submit" class="btn btn-rose pull-right">@R.G("Save")</button>
                                         <div class="clearfix"></div>
 
                                     </div>
@@ -705,6 +705,7 @@
         $('#defaultImgdiv').removeClass('fileinput-exists');
         $('#defaultImgdiv').addClass('fileinput-new');
         $('div').addClass('is-empty');
+        $('#EmployeeId').val('');
 
     }
 

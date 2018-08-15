@@ -45,9 +45,9 @@ namespace Yogiram.core.Service
         {
             var ModuleId = (from a in db.AT_Menu where MenuIds.Contains(a.MenuId) select a.ModuleId).FirstOrDefault();
 
-            int? UserRoleId = (from a in db.AT_UserInRoles where a.ModuleId == ModuleId select a.RoleId).FirstOrDefault();
+            var UserRoleId = (from a in db.AT_UserInRoles where a.ModuleId == ModuleId select a.RoleId).ToList();
 
-            bool IsMenu =(from a in db.AT_UserInRoles where a.RoleId==UserRoleId && a.UserId==Context.UserId select a).Any();
+            bool IsMenu = (from a in db.AT_UserInRoles where UserRoleId.Contains(a.RoleId) && a.UserId == Context.UserId select a).Any();
 
            // menuList = query;
 

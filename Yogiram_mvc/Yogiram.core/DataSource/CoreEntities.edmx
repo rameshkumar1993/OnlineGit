@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SampleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SampleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Sample.dbo.AT_Menu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AT_Menu">
@@ -121,6 +121,27 @@ warning 6002: The table/view 'Sample.dbo.AT_Modules' does not have a primary key
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="150" />
           <Property Name="ModifiedDate" Type="nvarchar" MaxLength="150" />
         </EntityType>
+        <EntityType Name="DeviceLogs">
+          <Key>
+            <PropertyRef Name="DeviceLogId" />
+          </Key>
+          <Property Name="DeviceLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpId" Type="int" />
+          <Property Name="Company" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsInValid" Type="bit" />
+          <Property Name="AttState" Type="int" />
+          <Property Name="VerifyMethod" Type="int" />
+          <Property Name="PunchDate" Type="date" />
+          <Property Name="PunchDateTime" Type="datetime" Nullable="false" />
+          <Property Name="MachineId" Type="int" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Day" Type="int" />
+          <Property Name="Hour" Type="int" />
+          <Property Name="Minutes" Type="int" />
+          <Property Name="Seconds" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="EmployeeMaster">
           <Key>
             <PropertyRef Name="EmployeeId" />
@@ -234,6 +255,7 @@ warning 6002: The table/view 'Sample.dbo.AT_Modules' does not have a primary key
           <EntitySet Name="AT_UserInRoles" EntityType="Self.AT_UserInRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompanyMaster" EntityType="Self.CompanyMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ComponentMaster" EntityType="Self.ComponentMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceLogs" EntityType="Self.DeviceLogs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeMaster" EntityType="Self.EmployeeMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblRegister" EntityType="Self.TblRegister" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AT_Menu" EntityType="Self.AT_Menu" store:Type="Tables" store:Schema="dbo">
@@ -324,6 +346,7 @@ FROM [dbo].[AT_Modules] AS [AT_Modules]</DefiningQuery>
             <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
           </AssociationSet>
           <EntitySet Name="AT_Modules" EntityType="SampleModel.AT_Modules" />
+          <EntitySet Name="DeviceLogs" EntityType="SampleModel.DeviceLogs" />
         </EntityContainer>
         <EntityType Name="TblRegister">
           <Key>
@@ -537,6 +560,27 @@ FROM [dbo].[AT_Modules] AS [AT_Modules]</DefiningQuery>
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="DeviceLogs">
+          <Key>
+            <PropertyRef Name="DeviceLogId" />
+          </Key>
+          <Property Name="DeviceLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpId" Type="Int32" />
+          <Property Name="Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsInValid" Type="Boolean" />
+          <Property Name="AttState" Type="Int32" />
+          <Property Name="VerifyMethod" Type="Int32" />
+          <Property Name="PunchDate" Type="DateTime" Precision="0" />
+          <Property Name="PunchDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MachineId" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Day" Type="Int32" />
+          <Property Name="Hour" Type="Int32" />
+          <Property Name="Minutes" Type="Int32" />
+          <Property Name="Seconds" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -720,6 +764,28 @@ FROM [dbo].[AT_Modules] AS [AT_Modules]</DefiningQuery>
                 <ScalarProperty Name="Enable" ColumnName="Enable" />
                 <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
                 <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceLogs">
+            <EntityTypeMapping TypeName="SampleModel.DeviceLogs">
+              <MappingFragment StoreEntitySet="DeviceLogs">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Seconds" ColumnName="Seconds" />
+                <ScalarProperty Name="Minutes" ColumnName="Minutes" />
+                <ScalarProperty Name="Hour" ColumnName="Hour" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+                <ScalarProperty Name="PunchDateTime" ColumnName="PunchDateTime" />
+                <ScalarProperty Name="PunchDate" ColumnName="PunchDate" />
+                <ScalarProperty Name="VerifyMethod" ColumnName="VerifyMethod" />
+                <ScalarProperty Name="AttState" ColumnName="AttState" />
+                <ScalarProperty Name="IsInValid" ColumnName="IsInValid" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="DeviceLogId" ColumnName="DeviceLogId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -5,8 +5,12 @@ using System.Web;
 
 namespace Attandance.Models
 {
-    public class HomeModels
+    public class CalendarModels
     {
-
+        public string title { get; set; }
+        public string start { get; set; }
+        public string end { get; set; }
+        public string className { get; set; }
+        
     }
 }

@@ -103,6 +103,18 @@ namespace EIM.Controllers
 
                 CoreContext.SaveChanges();
 
+                AT_UserInRoles objUserRoles = new AT_UserInRoles();
+                objUserRoles.UserInRoleId = new Guid();
+                objUserRoles.ModuleId = new Guid("367128CE-4D5A-4F1F-9181-15A96B5CC42C");
+                objUserRoles.RoleId = 3; // dont't hard core the values -- this is temparory I hard core the value
+                objUserRoles.UserId = objEmployeeMaster.EmployeeId;
+                objUserRoles.CreatedBy = User.Identity.Name;
+                objUserRoles.CreatedDate = DateTime.Now;
+
+                CoreContext.AT_UserInRoles.Add(objUserRoles);
+
+                CoreContext.SaveChanges();
+                
                 return Success(M("savedsucessfully"));
             }
 

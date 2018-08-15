@@ -19,6 +19,7 @@
         <EntityTypeShape EntityType="SampleModel.EmployeeMaster" Width="1.5" PointX="7.625" PointY="0.75" />
         <AssociationConnector Association="SampleModel.FK_EmployeeMaster_CompanyMaster" />
         <EntityTypeShape EntityType="SampleModel.AT_Modules" Width="1.5" PointX="4.125" PointY="4.375" />
+        <EntityTypeShape EntityType="SampleModel.DeviceLogs" Width="1.5" PointX="5.75" PointY="4.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

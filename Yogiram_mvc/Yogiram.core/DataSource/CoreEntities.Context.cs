@@ -35,5 +35,6 @@ namespace Yogiram.core.DataSource
         public DbSet<AT_UserInRoles> AT_UserInRoles { get; set; }
         public DbSet<EmployeeMaster> EmployeeMaster { get; set; }
         public DbSet<AT_Modules> AT_Modules { get; set; }
+        public DbSet<DeviceLogs> DeviceLogs { get; set; }
     }
 }
