@@ -9,10 +9,10 @@ namespace Yogiram.web.core.Models
 {
     public class AccountLogin
     {
-        [Required]
+        [Required(ErrorMessage = "User name is required")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
