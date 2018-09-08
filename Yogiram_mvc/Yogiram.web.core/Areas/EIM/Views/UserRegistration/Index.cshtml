@@ -439,7 +439,11 @@
 
             //ResetForm();
             var row = datatable.row($(this).closest('tr')).data();
+            var pos = datatable.actualRow(this).data();
+            var column = datatable.column($(this).attr('data-column'));
 
+            column.visible(!column.visible());
+            row = datatable.row($(this).closest('tr')).data();
             $("#EmployeeId").val(row.EmployeeId);
             $("#EmployeeName").focus().val(row.EmployeeName);
             $("#EmployeeFatherName").val(row.FathersName);
@@ -713,6 +717,25 @@
     demo.initMaterialWizard();
 
     $("input[data-val-date]").removeAttr("data-val-date");
+
+    $.fn.datatable.Api.register("actualRow()", function (selector, opts) {
+        if (selector.nodeName)
+            selector = $(selector);
+
+        if (selector instanceof jQuery) {
+            if (!selector.is("tr"))
+                selector = selector.closest("tr");
+
+            if (!selector.is("tr[role=row]")) {
+                var t = selector.closest("table");
+
+                if (t.is(".responsive-child"))
+                    selector = t.closest("tr").prev();
+            }
+        }
+
+        return this.row(selector, opts);
+    });
 
 </script>
 

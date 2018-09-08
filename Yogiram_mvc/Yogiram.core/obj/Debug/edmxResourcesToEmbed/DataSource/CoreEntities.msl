@@ -181,5 +181,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="DeviceLogs">
+      <EntityTypeMapping TypeName="SampleModel.DeviceLogs">
+        <MappingFragment StoreEntitySet="DeviceLogs">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Seconds" ColumnName="Seconds" />
+          <ScalarProperty Name="Minutes" ColumnName="Minutes" />
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+          <ScalarProperty Name="PunchDateTime" ColumnName="PunchDateTime" />
+          <ScalarProperty Name="PunchDate" ColumnName="PunchDate" />
+          <ScalarProperty Name="VerifyMethod" ColumnName="VerifyMethod" />
+          <ScalarProperty Name="AttState" ColumnName="AttState" />
+          <ScalarProperty Name="IsInValid" ColumnName="IsInValid" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="DeviceLogId" ColumnName="DeviceLogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -3,7 +3,12 @@
 @{
     ViewBag.Title = "Register Form";
 }
+<style>
+    .clickable {
+        cursor: pointer;
+    }
 
+</style>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -61,7 +66,7 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
 
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal clickable fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -126,9 +131,9 @@
 
                             </div>
                             @*<div class="modal-footer">
-                                    <button type="button" class="btn btn-simple">Nice Button</button>
-                                    <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
-                                </div>*@
+                        <button type="button" class="btn btn-simple">Nice Button</button>
+                        <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+                    </div>*@
                         </div>
                     </div>
                 </div>

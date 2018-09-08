@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="SampleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="SampleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <!--Errors Found During Generation:
 warning 6002: The table/view 'Sample.dbo.AT_Menu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="AT_Menu">
@@ -116,6 +116,27 @@ warning 6002: The table/view 'Sample.dbo.AT_Modules' does not have a primary key
     <Property Name="ModifiedBy" Type="nvarchar" MaxLength="150" />
     <Property Name="ModifiedDate" Type="nvarchar" MaxLength="150" />
   </EntityType>
+  <EntityType Name="DeviceLogs">
+    <Key>
+      <PropertyRef Name="DeviceLogId" />
+    </Key>
+    <Property Name="DeviceLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="Company" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsInValid" Type="bit" />
+    <Property Name="AttState" Type="int" />
+    <Property Name="VerifyMethod" Type="int" />
+    <Property Name="PunchDate" Type="date" />
+    <Property Name="PunchDateTime" Type="datetime" Nullable="false" />
+    <Property Name="MachineId" Type="int" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Month" Type="int" />
+    <Property Name="Day" Type="int" />
+    <Property Name="Hour" Type="int" />
+    <Property Name="Minutes" Type="int" />
+    <Property Name="Seconds" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
   <EntityType Name="EmployeeMaster">
     <Key>
       <PropertyRef Name="EmployeeId" />
@@ -229,6 +250,7 @@ warning 6002: The table/view 'Sample.dbo.AT_Modules' does not have a primary key
     <EntitySet Name="AT_UserInRoles" EntityType="Self.AT_UserInRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CompanyMaster" EntityType="Self.CompanyMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ComponentMaster" EntityType="Self.ComponentMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeviceLogs" EntityType="Self.DeviceLogs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EmployeeMaster" EntityType="Self.EmployeeMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblRegister" EntityType="Self.TblRegister" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AT_Menu" EntityType="Self.AT_Menu" store:Type="Tables" store:Schema="dbo">
